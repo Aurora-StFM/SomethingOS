@@ -1,35 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    SomethingOS local manifest.
+    SomethingOS local manifest: the SomethingOS repositories shared by
+    every device.
 
     Copy this file into .repo/local_manifests/ in a LineageOS 24.0 checkout,
-    then run `repo sync`. See README.md for the full steps.
+    together with the manifest for your device (e.g. gta4xlveu.xml), then
+    run `repo sync`. See README.md for the full steps.
 -->
 <manifest>
     <remote name="somethingos" fetch="https://github.com/Aurora-StFM" />
-    <remote name="gta4xlve-dev" fetch="https://github.com/gta4xlve-dev" />
 
     <!-- SomethingOS vendor layer (this repository) -->
     <project name="SomethingOS"
              path="vendor/somethingos"
              remote="somethingos"
              revision="somethingos-24.0" />
-
-    <!-- Galaxy Tab S6 Lite 2022 (Qualcomm), codename gta4xlveu -->
-    <project name="android_device_samsung_gta4xlveu"
-             path="device/samsung/gta4xlveu"
-             remote="gta4xlve-dev"
-             revision="lineage-24.0" />
-
-    <project name="android_kernel_samsung_gta4xlve"
-             path="kernel/samsung/gta4xlve"
-             remote="gta4xlve-dev"
-             revision="lineage-24.0" />
-
-    <!-- No lineage-24.0 branch for the blobs yet; the 24.0 device tree's
-         proprietary-files.txt is identical to 23.2's, so 23.2 is correct. -->
-    <project name="android_vendor_samsung_gta4xlveu"
-             path="vendor/samsung/gta4xlveu"
-             remote="gta4xlve-dev"
-             revision="lineage-23.2" />
 </manifest>

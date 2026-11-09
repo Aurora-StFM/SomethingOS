@@ -44,8 +44,25 @@ config/common.mk          shared config, inherited by every product
 config/version.mk         version string and properties
 products/                 one product makefile per supported device
 rro/                      runtime resource overlays (theming)
-manifests/somethingos.xml local manifest for repo
+manifests/somethingos.xml local manifest: SomethingOS repos, shared by all devices
+manifests/<codename>.xml  local manifest: one device's device/kernel/vendor trees
 ```
+
+Devices live side by side in this layout rather than on separate branches.
+Branches track Android versions (`somethingos-24.0`, `somethingos-22.2`).
+
+### Adding a device
+
+1. Add `products/somethingos_<codename>.mk`, inheriting the device's
+   `lineage_<codename>.mk` and `vendor/somethingos/config/common.mk`
+   (copy an existing product file).
+2. List it in `AndroidProducts.mk` (`PRODUCT_MAKEFILES` and
+   `COMMON_LUNCH_CHOICES`).
+3. Add `manifests/<codename>.xml` with the device's trees.
+
+Anything that applies to only one device goes in its product file, never in
+`config/common.mk`. If a device tree needs patching, fork it into its own
+repository and point the device manifest at the fork.
 
 ## Building
 
@@ -58,14 +75,16 @@ mkdir somethingos && cd somethingos
 repo init -u https://github.com/LineageOS/android.git -b lineage-24.0 --git-lfs
 mkdir -p .repo/local_manifests
 
-# 2. Add SomethingOS and the device trees
-curl -o .repo/local_manifests/somethingos.xml \
-  https://raw.githubusercontent.com/Aurora-StFM/SomethingOS/somethingos-24.0/manifests/somethingos.xml
+# 2. Add SomethingOS and your device's trees
+BASE=https://raw.githubusercontent.com/Aurora-StFM/SomethingOS/somethingos-24.0/manifests
+DEVICE=gta4xlveu
+curl -o .repo/local_manifests/somethingos.xml "$BASE/somethingos.xml"
+curl -o ".repo/local_manifests/$DEVICE.xml" "$BASE/$DEVICE.xml"
 repo sync -c -j$(nproc)
 
 # 3. Build
 source build/envsetup.sh
-lunch somethingos_gta4xlveu-<release>-userdebug
+lunch somethingos_$DEVICE-<release>-userdebug
 m bacon
 ```
 

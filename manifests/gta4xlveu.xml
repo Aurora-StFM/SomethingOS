@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Device manifest: Samsung Galaxy Tab S6 Lite 2022 (Qualcomm)
+    Codename: gta4xlveu (SM-P613 Wi-Fi, SM-P619 LTE)
+
+    Use together with somethingos.xml. Sources: https://github.com/gta4xlve-dev
+-->
+<manifest>
+    <remote name="gta4xlve-dev" fetch="https://github.com/gta4xlve-dev" />
+
+    <project name="android_device_samsung_gta4xlveu"
+             path="device/samsung/gta4xlveu"
+             remote="gta4xlve-dev"
+             revision="lineage-24.0" />
+
+    <project name="android_kernel_samsung_gta4xlve"
+             path="kernel/samsung/gta4xlve"
+             remote="gta4xlve-dev"
+             revision="lineage-24.0" />
+
+    <!-- No lineage-24.0 branch for the blobs yet; the 24.0 device tree's
+         proprietary-files.txt is identical to 23.2's, so 23.2 is correct. -->
+    <project name="android_vendor_samsung_gta4xlveu"
+             path="vendor/samsung/gta4xlveu"
+             remote="gta4xlve-dev"
+             revision="lineage-23.2" />
+</manifest>
