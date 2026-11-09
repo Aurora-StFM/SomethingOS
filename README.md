@@ -16,7 +16,12 @@ does not ship any of Nothing's fonts, icons, wallpapers, sounds or other assets.
 
 | Device | Model numbers | SoC | Base |
 | --- | --- | --- | --- |
-| Samsung Galaxy Tab S6 Lite **2022** (Qualcomm) | SM-P613, SM-P619 | Snapdragon 720G | [Unofficial LineageOS 22.2](https://xdaforums.com/t/rom-unofficial-2022-model-lineageos-22-2-for-galaxy-tab-s6-lite-2022-qualcomm.4699445/) |
+| Samsung Galaxy Tab S6 Lite **2022** (Qualcomm) | SM-P613, SM-P619 | Snapdragon 720G | LineageOS 24.0 (Android 17), unofficial |
+
+SomethingOS targets **Android 17** via LineageOS 24.0. The device's
+[LineageOS release on XDA](https://xdaforums.com/t/rom-unofficial-2022-model-lineageos-22-2-for-galaxy-tab-s6-lite-2022-qualcomm.4699445/)
+is still 22.2 (Android 15); its maintainers' 24.0 sources are in active
+development and not yet released.
 
 Other Tab S6 Lite models are **not** supported. That includes the original
 2020 Exynos model (SM-P610/P615) and the 2024 model, which use different hardware.
@@ -40,28 +45,29 @@ manifests/somethingos.xml local manifest for repo
 
 ## Building
 
-You need a machine that can build LineageOS 22.2. See LineageOS's own build
+You need a machine that can build LineageOS 24.0. See LineageOS's own build
 guides for host requirements and how to install `repo`.
 
 ```bash
-# 1. Get the LineageOS 22.2 source
+# 1. Get the LineageOS 24.0 source
 mkdir somethingos && cd somethingos
-repo init -u https://github.com/LineageOS/android.git -b lineage-22.2 --git-lfs
+repo init -u https://github.com/LineageOS/android.git -b lineage-24.0 --git-lfs
 mkdir -p .repo/local_manifests
 
 # 2. Add SomethingOS and the device trees
 curl -o .repo/local_manifests/somethingos.xml \
-  https://raw.githubusercontent.com/Aurora-StFM/SomethingOS/somethingos-22.2/manifests/somethingos.xml
+  https://raw.githubusercontent.com/Aurora-StFM/SomethingOS/somethingos-24.0/manifests/somethingos.xml
 repo sync -c -j$(nproc)
 
 # 3. Build
 source build/envsetup.sh
-lunch somethingos_gta4xlveu-bp1a-userdebug
+lunch somethingos_gta4xlveu-<release>-userdebug
 m bacon
 ```
 
-The release name in the `lunch` target (`bp1a` above) must match the one used
-by LineageOS 22.2 and the device tree. Check the device tree if `lunch` complains.
+`<release>` is the Android 17 release config name used by LineageOS 24.0.
+The available names match the files under `build/release/release_configs/`
+in your checkout, and `lunch` lists the valid ones if you pass a wrong one.
 
 The device, kernel and vendor trees come from the
 [gta4xlve-dev](https://github.com/gta4xlve-dev) project, the same sources as the

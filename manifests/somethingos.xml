@@ -2,7 +2,7 @@
 <!--
     SomethingOS local manifest.
 
-    Copy this file into .repo/local_manifests/ in a LineageOS 22.2 checkout,
+    Copy this file into .repo/local_manifests/ in a LineageOS 24.0 checkout,
     then run `repo sync`. See README.md for the full steps.
 -->
 <manifest>
@@ -13,21 +13,23 @@
     <project name="SomethingOS"
              path="vendor/somethingos"
              remote="somethingos"
-             revision="somethingos-22.2" />
+             revision="somethingos-24.0" />
 
     <!-- Galaxy Tab S6 Lite 2022 (Qualcomm), codename gta4xlveu -->
     <project name="android_device_samsung_gta4xlveu"
              path="device/samsung/gta4xlveu"
              remote="gta4xlve-dev"
-             revision="lineage-22.2" />
+             revision="lineage-24.0" />
 
     <project name="android_kernel_samsung_gta4xlve"
              path="kernel/samsung/gta4xlve"
              remote="gta4xlve-dev"
-             revision="lineage-22.2" />
+             revision="lineage-24.0" />
 
+    <!-- No lineage-24.0 branch for the blobs yet; the 24.0 device tree's
+         proprietary-files.txt is identical to 23.2's, so 23.2 is correct. -->
     <project name="android_vendor_samsung_gta4xlveu"
              path="vendor/samsung/gta4xlveu"
              remote="gta4xlve-dev"
-             revision="lineage-22.2" />
+             revision="lineage-23.2" />
 </manifest>
