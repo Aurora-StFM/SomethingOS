@@ -46,6 +46,7 @@ products/                 one product makefile per supported device
 rro/                      runtime resource overlays (theming)
 manifests/somethingos.xml local manifest: SomethingOS repos, shared by all devices
 manifests/<codename>.xml  local manifest: one device's device/kernel/vendor trees
+docs/design/              design notes and concept sketches
 ```
 
 Devices live side by side in this layout rather than on separate branches.
