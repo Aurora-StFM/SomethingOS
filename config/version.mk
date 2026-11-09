@@ -1,0 +1,20 @@
+#
+# Copyright (C) 2026 The SomethingOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+SOMETHINGOS_VERSION_MAJOR := 0
+SOMETHINGOS_VERSION_MINOR := 1
+
+# Override from the environment for release builds, e.g.
+#   export SOMETHINGOS_BUILD_TYPE=RELEASE
+SOMETHINGOS_BUILD_TYPE ?= UNOFFICIAL
+
+SOMETHINGOS_BUILD_DATE := $(shell date -u +%Y%m%d)
+
+SOMETHINGOS_VERSION := \
+    $(SOMETHINGOS_VERSION_MAJOR).$(SOMETHINGOS_VERSION_MINOR)-$(SOMETHINGOS_BUILD_DATE)-$(SOMETHINGOS_BUILD_TYPE)
+
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    ro.somethingos.version=$(SOMETHINGOS_VERSION) \
+    ro.somethingos.build_type=$(SOMETHINGOS_BUILD_TYPE)

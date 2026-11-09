@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2026 The SomethingOS Project
+    SPDX-License-Identifier: Apache-2.0
+
+    Framework-wide shape tweaks. Starting point only: values will be
+    tuned once the concept art is ready.
+-->
+<resources>
+    <!-- Pill-shaped buttons -->
+    <dimen name="config_buttonCornerRadius">28dp</dimen>
+
+    <!-- Softer, rounder dialogs -->
+    <dimen name="config_dialogCornerRadius">28dp</dimen>
+</resources>

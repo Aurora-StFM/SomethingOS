@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    SomethingOS local manifest.
+
+    Copy this file into .repo/local_manifests/ in a LineageOS 22.2 checkout,
+    then run `repo sync`. See README.md for the full steps.
+-->
+<manifest>
+    <remote name="somethingos" fetch="https://github.com/Aurora-StFM" />
+
+    <!-- SomethingOS vendor layer (this repository) -->
+    <project name="SomethingOS"
+             path="vendor/somethingos"
+             remote="somethingos"
+             revision="somethingos-22.2" />
+
+    <!--
+        Device trees for the Galaxy Tab S6 Lite 2022 (Qualcomm).
+
+        TODO: fill these in from the source links of the unofficial
+        LineageOS 22.2 build on XDA. Typically you need:
+          - device/samsung/<codename>
+          - kernel/samsung/<kernel-tree>
+          - vendor/samsung/<codename>   (proprietary blobs)
+        plus any common trees they depend on.
+
+    <remote name="device-maintainer" fetch="https://github.com/MAINTAINER" />
+    <project name="android_device_samsung_CODENAME"
+             path="device/samsung/CODENAME"
+             remote="device-maintainer"
+             revision="lineage-22.2" />
+    -->
+</manifest>
