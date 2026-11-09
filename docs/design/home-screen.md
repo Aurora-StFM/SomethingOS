@@ -18,13 +18,22 @@ A setting lets the user choose between two layouts:
   rely on a cell always being the same shape.
 - The leftover space on the long side of the screen is used, not left empty:
   - **Dock:** along the bottom in portrait, a vertical column on the right in
-    landscape.
-  - **"Empty space" widgets:** two dedicated widget slots, above the grid in
-    portrait and to the left of it in landscape.
-- The dock and widget slots stay on the same physical edge of the tablet
-  when it's rotated (portrait top → landscape left, portrait bottom →
-  landscape right). The dock order follows: W X Y Z left to right in
-  portrait becomes W X Y Z bottom to top in landscape.
+    landscape. Its position is tied to the screen, not the physical edge:
+    portrait is always bottom (0° and 180°), landscape is always right (both
+    directions). Dock order W X Y Z left to right in portrait becomes
+    W X Y Z bottom to top in landscape.
+  - **Widget area:** a strip of **10 square cells**, the same size as the main
+    grid's, above the grid in portrait (5 wide × 2 tall) and to the left of it
+    in landscape (2 wide × 5 tall). Enough for two 2×2 widgets plus two 1×1
+    items (such as a Quick Settings toggle widget). Square widgets (1×1, 2×2)
+    only move when the screen rotates; a pill would turn on its side
+    (2×1 ↔ 1×2), so pill widgets there need both orientations.
+  - The widget area is **fixed across home screen pages**, like the dock.
+
+### Phones
+
+Phones don't use the square grid. They follow the NothingOS phone home
+screen: the standard grid with Nothing-style widgets, folders and dock.
 
 ## How to build it
 
@@ -32,20 +41,6 @@ A setting lets the user choose between two layouts:
   device profile and has selectable grid options (the "App grid" choice in
   Wallpaper & style), so the square grid is a new layout mode alongside the
   stock one rather than a rewrite.
-- The "empty space" slots are a small separate widget area, built as a
-  mini-grid of the same square cells, so placed widgets reflow when the
-  orientation changes.
-
-## Open questions
-
-- **Which way round in landscape?** Following the physical edge means the
-  dock is on the right when rotated one way and on the left when rotated
-  the other. Do we follow the physical edge both ways, or always put the
-  dock on the right?
-- **Slot shapes:** the second widget slot is tall in landscape but wide in
-  portrait, so a widget placed there changes shape on rotation. Most
-  widgets can resize, but some won't look right. Alternative: make both
-  slots square.
-- **Per page or fixed?** Are the "empty space" widgets the same on every
-  home screen page, like the dock, or does each page have its own?
-- **Phones:** does the square grid apply to phones too, or tablets only?
+- The widget area is a separate small grid (5×2 / 2×5) that reuses the
+  launcher's widget hosting. Rotation maps each cell to its rotated
+  position, so placed widgets keep their size and relative arrangement.
