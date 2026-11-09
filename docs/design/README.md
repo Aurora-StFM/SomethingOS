@@ -9,6 +9,8 @@ top of LineageOS 24.0 (Android 17).
 | Lock screen layout | [lockscreen.md](lockscreen.md) |
 | Lock screen widgets | [widgets.md](widgets.md) |
 | Settings | [settings.md](settings.md) |
+| Quick Settings and notification shade | [quick-settings.md](quick-settings.md) |
+| Theme and style | [theme-and-style.md](theme-and-style.md) |
 
 ## Principles
 
