@@ -7,6 +7,7 @@
 -->
 <manifest>
     <remote name="somethingos" fetch="https://github.com/Aurora-StFM" />
+    <remote name="gta4xlve-dev" fetch="https://github.com/gta4xlve-dev" />
 
     <!-- SomethingOS vendor layer (this repository) -->
     <project name="SomethingOS"
@@ -14,20 +15,19 @@
              remote="somethingos"
              revision="somethingos-22.2" />
 
-    <!--
-        Device trees for the Galaxy Tab S6 Lite 2022 (Qualcomm).
-
-        TODO: fill these in from the source links of the unofficial
-        LineageOS 22.2 build on XDA. Typically you need:
-          - device/samsung/<codename>
-          - kernel/samsung/<kernel-tree>
-          - vendor/samsung/<codename>   (proprietary blobs)
-        plus any common trees they depend on.
-
-    <remote name="device-maintainer" fetch="https://github.com/MAINTAINER" />
-    <project name="android_device_samsung_CODENAME"
-             path="device/samsung/CODENAME"
-             remote="device-maintainer"
+    <!-- Galaxy Tab S6 Lite 2022 (Qualcomm), codename gta4xlveu -->
+    <project name="android_device_samsung_gta4xlveu"
+             path="device/samsung/gta4xlveu"
+             remote="gta4xlve-dev"
              revision="lineage-22.2" />
-    -->
+
+    <project name="android_kernel_samsung_gta4xlve"
+             path="kernel/samsung/gta4xlve"
+             remote="gta4xlve-dev"
+             revision="lineage-22.2" />
+
+    <project name="android_vendor_samsung_gta4xlveu"
+             path="vendor/samsung/gta4xlveu"
+             remote="gta4xlve-dev"
+             revision="lineage-22.2" />
 </manifest>

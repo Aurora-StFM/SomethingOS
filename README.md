@@ -56,15 +56,17 @@ repo sync -c -j$(nproc)
 
 # 3. Build
 source build/envsetup.sh
-lunch somethingos_gta4xlve-bp1a-userdebug
+lunch somethingos_gta4xlveu-bp1a-userdebug
 m bacon
 ```
 
 The release name in the `lunch` target (`bp1a` above) must match the one used
 by LineageOS 22.2 and the device tree. Check the device tree if `lunch` complains.
 
-The device trees in `manifests/somethingos.xml` still need filling in, and the
-device codename (`gta4xlve`) still needs to be confirmed against them.
+The device, kernel and vendor trees come from the
+[gta4xlve-dev](https://github.com/gta4xlve-dev) project, the same sources as the
+unofficial LineageOS build. The device codename is `gta4xlveu`; one build covers
+both the Wi-Fi (SM-P613) and LTE (SM-P619) models.
 
 ## Roadmap
 
