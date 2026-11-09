@@ -12,9 +12,10 @@ Like NothingOS 5, the user can choose how the shade works:
 
 Behaviour per orientation:
 
-- **Portrait:** follows the user's choice. In Separate mode, a horizontal
-  swipe switches between the two panels; the arrow at the left edge of
-  Quick Settings hints at this.
+- **Portrait:** follows the user's choice. In Separate mode, a sideways
+  swipe swaps between the two panels, as in NothingOS; the arrow at the left
+  edge of Quick Settings hints at this. Swiping down from the top left still
+  opens notifications directly.
 - **Landscape:** both panels open together, side by side, regardless of the
   setting. Notifications on the left, Quick Settings on the right.
 
@@ -30,6 +31,11 @@ From top to bottom:
    alarm, rotation) next to two tall vertical sliders: **media volume** and
    **brightness**.
 4. **More tiles:** in portrait, the extra height shows more rows of tiles.
+
+When there are more tiles than fit, the panel **scrolls**, as in NothingOS:
+the header row (edit, active apps, settings, power) stays fixed at the top,
+and everything below it, media card included, scrolls under it. Same in
+both orientations.
 
 The notification panel (left in landscape) has notification cards, with
 round buttons at the bottom for notification history and notification
@@ -77,9 +83,3 @@ bottom. Android already shows these at a fixed width on large screens, so
 they only need restyling. In landscape, anchor them over the Quick Settings
 side rather than the centre of the screen, so they don't straddle both
 panels.
-
-## Open questions
-
-- In portrait Separate mode, does the horizontal swipe replace swiping down
-  from the left, or work in addition to it?
-- In landscape, if there are more tiles than fit, do they scroll or page?
