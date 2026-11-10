@@ -41,6 +41,11 @@ The notification panel (left in landscape) has notification cards, with
 round buttons at the bottom for notification history and notification
 settings on the left, and Clear all on the right.
 
+In **portrait Separate mode**, the notification panel on its own is a
+**centred column**, the same width as the Quick Settings column: media
+card, notification cards, then the history, settings and Clear all buttons,
+as on NothingOS phones.
+
 ## How to build it
 
 ### Separate / combined: Android's dual shade
