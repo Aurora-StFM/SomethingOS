@@ -12,20 +12,26 @@ does not ship any of Nothing's fonts, icons, wallpapers, sounds or other assets.
 
 ## Supported devices
 
-**Currently supported:** only one device.
+**Currently supported:** two devices.
 
-| Device | Model numbers | SoC | Base |
-| --- | --- | --- | --- |
-| Samsung Galaxy Tab S6 Lite **2022** (Qualcomm) | SM-P613, SM-P619 | Snapdragon 720G | LineageOS 24.0 (Android 17), unofficial |
+| Device | Codename | Model numbers | SoC | Base |
+| --- | --- | --- | --- | --- |
+| Samsung Galaxy Tab S6 Lite **2022** (Qualcomm) | `gta4xlveu` | SM-P613, SM-P619 | Snapdragon 720G | LineageOS 24.0 (Android 17), unofficial |
+| Nothing Phone (1) | `Spacewar` | A063 | Snapdragon 778G+ | LineageOS 24.0 (Android 17), official |
 
-SomethingOS targets **Android 17** via LineageOS 24.0. The device's
+SomethingOS targets **Android 17** via LineageOS 24.0.
+
+The Nothing Phone (1) is officially supported by LineageOS, so its device,
+kernel and vendor sources are the same ones official LineageOS builds use.
+
+For the Tab S6 Lite, the device's
 [LineageOS release on XDA](https://xdaforums.com/t/rom-unofficial-2022-model-lineageos-22-2-for-galaxy-tab-s6-lite-2022-qualcomm.4699445/)
 is still 22.2 (Android 15); its maintainers' 24.0 sources are in active
 development and not yet released.
 
-If the Android 17 sources don't boot yet, the `somethingos-22.2` branch is kept
-as a fallback. It builds on the released LineageOS 22.2 (Android 15) device
-sources instead.
+If the Tab S6 Lite's Android 17 sources don't boot yet, the `somethingos-22.2`
+branch is kept as a fallback (Tab S6 Lite only). It builds on the released
+LineageOS 22.2 (Android 15) device sources instead.
 
 Other Tab S6 Lite models are **not** supported. That includes the original
 2020 Exynos model (SM-P610/P615) and the 2024 model, which use different hardware.
@@ -93,10 +99,13 @@ m bacon
 The available names match the files under `build/release/release_configs/`
 in your checkout, and `lunch` lists the valid ones if you pass a wrong one.
 
-The device, kernel and vendor trees come from the
+Set `DEVICE` to the codename from the supported devices table
+(`gta4xlveu` or `Spacewar`).
+
+The Tab S6 Lite's device, kernel and vendor trees come from the
 [gta4xlve-dev](https://github.com/gta4xlve-dev) project, the same sources as the
-unofficial LineageOS build. The device codename is `gta4xlveu`; one build covers
-both the Wi-Fi (SM-P613) and LTE (SM-P619) models.
+unofficial LineageOS build; one build covers both the Wi-Fi (SM-P613) and LTE
+(SM-P619) models.
 
 ## Roadmap
 
