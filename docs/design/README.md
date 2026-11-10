@@ -12,6 +12,7 @@ top of LineageOS 24.0 (Android 17).
 | Quick Settings and notification shade | [quick-settings.md](quick-settings.md) |
 | Home screen | [home-screen.md](home-screen.md) |
 | App drawer | [app-drawer.md](app-drawer.md) |
+| Recents and multitasking | [recents.md](recents.md) |
 | Theme and style | [theme-and-style.md](theme-and-style.md) |
 | NothingOS 5 reference notes | [nothingos-reference.md](nothingos-reference.md) |
 
