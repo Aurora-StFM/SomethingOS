@@ -1,0 +1,48 @@
+name: Sync design docs to wiki
+
+on:
+  push:
+    branches: [somethingos-24.0]
+    paths:
+      - "docs/design/**"
+      - ".github/scripts/sync_wiki.py"
+      - ".github/workflows/wiki.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wiki-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check out wiki
+        run: |
+          git clone --depth 1 \
+            "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git" \
+            wiki
+
+      - name: Generate wiki pages
+        run: |
+          python3 .github/scripts/sync_wiki.py docs/design wiki \
+            "${{ github.repository }}" "${{ github.ref_name }}"
+
+      - name: Publish
+        working-directory: wiki
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Wiki already up to date."
+          else
+            git commit -m "Sync from ${{ github.repository }}@${GITHUB_SHA::7}"
+            git push
+          fi

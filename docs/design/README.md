@@ -1,6 +1,8 @@
 # SomethingOS design
 
-Design notes and concept sketches for the SomethingOS UI. Each document
+Design notes and concept sketches for the SomethingOS UI. These files are
+mirrored to the [wiki](https://github.com/Aurora-StFM/SomethingOS/wiki) on
+every push; edit them here, not in the wiki. Each document
 covers one area: what it should look like, and how we plan to build it on
 top of LineageOS 24.0 (Android 17).
 

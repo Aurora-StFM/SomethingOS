@@ -69,6 +69,14 @@ much larger job.
 The SomethingOS layer is kept device-agnostic so more LineageOS-supported
 devices can be added later, and x86 builds are a long-term goal.
 
+## Design
+
+The planned look and behaviour of SomethingOS (lock screen, widgets, Quick
+Settings, home screen, Glyph and more) is documented in the
+**[wiki](https://github.com/Aurora-StFM/SomethingOS/wiki)**. The wiki is
+generated automatically from `docs/design/` in this repository; edit the
+files there.
+
 ## Repository layout
 
 This repository is checked out at `vendor/somethingos` in a LineageOS tree.
@@ -81,7 +89,7 @@ products/                 one product makefile per supported device
 rro/                      runtime resource overlays (theming)
 manifests/somethingos.xml local manifest: SomethingOS repos, shared by all devices
 manifests/<codename>.xml  local manifest: one device's device/kernel/vendor trees
-docs/design/              design notes and concept sketches
+docs/design/              design notes and concept sketches (mirrored to the wiki)
 ```
 
 Devices live side by side in this layout rather than on separate branches.
