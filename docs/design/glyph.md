@@ -35,7 +35,9 @@ then the Glyph features grouped below.
 On the Phone (1), which has light strips but no matrix, matrix-only tools
 (Glyph Toys) are hidden or adapted.
 
-## Pseudo Glyph (devices without Glyph lights)
+## GlyphLike: Pseudo Glyph (devices without Glyph lights)
+
+Working name: **GlyphLike** (may change).
 
 Idea: on phones with an OLED/AMOLED screen but no Glyph lights, draw
 Glyph-style light patterns on the **always-on display** instead.
@@ -62,6 +64,32 @@ How it fits:
     wake while they play;
   - keep the lit area small for battery;
   - shift positions slightly over time to avoid burn-in.
+
+### Glyph Builder
+
+Users design their own GlyphLike layout instead of getting a fixed one:
+
+- A **library of Glyph elements** to choose from: shapes such as straight
+  and curved strips, rings and ring segments, dots and small dot-matrix
+  blocks.
+- Up to **5 elements** per layout, placed on a **grid** over the
+  always-on display to the user's liking (moved, and possibly resized or
+  rotated).
+- Patterns light the elements **by their slot number (1–5)**, so every
+  layout works with every pattern. Elements that can show a level (strips,
+  rings) are used for charging, volume, timer and progress.
+- Five slots lines up with the Nothing Phone (1), whose lights are grouped
+  into five zones. Phone (1) patterns could map straight onto a GlyphLike
+  layout, and a preset layout could imitate the Phone (1)'s back.
+
+Still to decide:
+
+- How big the grid is and where it sits (whole screen, or an area such as
+  around the camera or along an edge).
+- What happens when a layout has fewer than five elements (skip the missing
+  slots, or merge them into the nearest one).
+- Burn-in: the whole layout should shift slightly over time.
+- Later: sharing layouts as files, so the community can make their own.
 
 ## What LineageOS already has
 
