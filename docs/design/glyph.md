@@ -82,14 +82,15 @@ Users design their own GlyphLike layout instead of getting a fixed one:
   into five zones. Phone (1) patterns could map straight onto a GlyphLike
   layout, and a preset layout could imitate the Phone (1)'s back.
 
-Still to decide:
+Decided:
 
-- How big the grid is and where it sits (whole screen, or an area such as
-  around the camera or along an edge).
-- What happens when a layout has fewer than five elements (skip the missing
-  slots, or merge them into the nearest one).
-- Burn-in: the whole layout should shift slightly over time.
-- Later: sharing layouts as files, so the community can make their own.
+- **Grid:** covers the **whole screen, edge to edge**.
+- **Fewer than five elements:** a GlyphLike setting chooses between
+  skipping the missing slots and merging them into the nearest element.
+- **Burn-in protection:** a GlyphLike setting, **on by default**, that
+  shifts the whole layout slightly over time.
+- **Future:** sharing layouts as files, so the community can make and swap
+  their own.
 
 ## What LineageOS already has
 
