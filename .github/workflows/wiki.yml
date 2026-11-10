@@ -1,10 +1,10 @@
-name: Sync design docs to wiki
+name: Sync docs to wiki
 
 on:
   push:
     branches: [somethingos-24.0]
     paths:
-      - "docs/design/**"
+      - "docs/**"
       - ".github/scripts/sync_wiki.py"
       - ".github/workflows/wiki.yml"
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
 
       - name: Generate wiki pages
         run: |
-          python3 .github/scripts/sync_wiki.py docs/design wiki \
+          python3 .github/scripts/sync_wiki.py docs wiki \
             "${{ github.repository }}" "${{ github.ref_name }}"
 
       - name: Publish

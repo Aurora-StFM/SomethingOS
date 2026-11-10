@@ -1,4 +1,4 @@
-# SomethingOS design
+# Design
 
 Design notes and concept sketches for the SomethingOS UI. These files are
 mirrored to the [wiki](https://github.com/Aurora-StFM/SomethingOS/wiki) on
