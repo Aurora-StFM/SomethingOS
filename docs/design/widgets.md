@@ -12,11 +12,31 @@ side by side:
 
 - A grid under the clock with four cell shapes: **circle** (1×1),
   **pill** (1×2 and 2×1) and **rounded square** (2×2).
-- An edit mode: picker sheet listing widgets with previews, a remove button
-  on each widget, drag to rearrange, Cancel / Done.
+- An edit mode: remove button on each widget, drag to rearrange,
+  Cancel / Done, and a **Widgets** sheet (below).
 - **Expand widget area** toggle: hides the main clock and gives its space to
-  widgets. On tablets in landscape this is the empty area under the left
-  column.
+  widgets.
+- **Expand widget area in landscape** toggle: on tablets in landscape, uses
+  the empty area under the left column for more widgets. Separate from the
+  first toggle, so landscape can have extra widgets while portrait keeps the
+  big clock.
+
+## Customising the lock screen
+
+![Tablet lock screen edit sketch, landscape and portrait](lockscreen-edit-tablet.png)
+
+- **Entry:** long-press an empty part of the lock screen until a
+  **Customise lock screen** button pops up; tap it. Android asks for the PIN
+  first, so nobody can change the lock screen of a locked device.
+- The lock screen stays visible while editing, with a sheet over part of
+  it:
+  - **landscape:** a card at the bottom right, leaving the clock and
+    widgets on the left in view;
+  - **portrait:** a card at the bottom centre, below the clock and widgets.
+- The **Widgets** sheet has the two Expand toggles at the top, then the
+  widget picker as a scrollable two-column grid of previews.
+- Tapping the clock opens the **Clock face** sheet in the same card style
+  (see [lockscreen.md](lockscreen.md#clock-faces)).
 
 ## How to build it
 
@@ -37,7 +57,17 @@ Plan:
    swipe-to page (`frameworks_base` fork).
 3. Restyle cells to the circle / pill / square shapes and the edit mode to
    the SomethingOS look.
-4. Add the Expand widget area toggle.
+4. Add the two Expand widget area toggles.
+
+### Edit mode
+
+- Android already has the long-press entry: a "Customise lock screen"
+  button that opens the Wallpaper & style app after unlocking. We keep the
+  gesture and point it at our edit mode.
+- Edit mode is a full-screen screen showing a live preview of the lock
+  screen (SystemUI can render one for other apps; Wallpaper & style uses
+  this) with our sheet over it. Widget changes go through the hub's widget
+  storage, clock changes through the clock settings.
 
 ### SomethingOS widgets are ordinary Android widgets
 
