@@ -35,6 +35,34 @@ then the Glyph features grouped below.
 On the Phone (1), which has light strips but no matrix, matrix-only tools
 (Glyph Toys) are hidden or adapted.
 
+## Pseudo Glyph (devices without Glyph lights)
+
+Idea: on phones with an OLED/AMOLED screen but no Glyph lights, draw
+Glyph-style light patterns on the **always-on display** instead.
+
+- OLED pixels that are off use no power, so a few lit dot-matrix shapes on
+  a black screen are cheap, which is why AOD works at all.
+- Uses:
+  - notification patterns when a notification arrives;
+  - a persistent small light for Essential Notifications until seen;
+  - charging level, Glyph Timer countdown, volume indicator and Glyph
+    Progress as dot-matrix bars or rings.
+- Not possible: Flip to Glyph (the screen faces down).
+- Not for LCD screens, where black pixels still use the backlight. The
+  Galaxy Tab S6 Lite has an LCD, so it won't get Pseudo Glyph.
+
+How it fits:
+
+- One Glyph app and one set of patterns, with two outputs: real Glyph
+  lights, or the AOD. The app shows whichever the device has.
+- AOD is drawn by SystemUI while the screen is "dozing". Constraints to
+  design around:
+  - the AOD normally only redraws about once a minute, so animations need
+    Android's notification "pulse" (a brief brighter wake) or a short
+    wake while they play;
+  - keep the lit area small for battery;
+  - shift positions slightly over time to avoid burn-in.
+
 ## What LineageOS already has
 
 LineageOS's Phone (1) sources (`hardware/nothing`) ship **ParanoidGlyph**,
