@@ -59,8 +59,16 @@ the user/profile settings.
 
 ## Fonts
 
-Nothing's NDot font is proprietary and can't be shipped. Candidates:
+Nothing's NDot font is proprietary and can't be shipped.
 
-- [Doto](https://fonts.google.com/specimen/Doto), an open-licence (OFL)
-  dot-matrix font;
-- an original SomethingOS dot-matrix font.
+**Chosen dot font: [Doto](https://fonts.google.com/specimen/Doto)** (SIL Open
+Font License), set to **weight 900** and **roundness 100** (both at their
+maximum). At those settings it is nearly identical to NDot.
+
+- Doto is a variable font with a weight axis (`wght`, 100–900) and a
+  roundness axis (`ROND`, 0–100). Either ship the variable font and set the
+  axes in the font configuration, or generate a fixed instance at
+  `wght 900, ROND 100` with fontTools to keep it small and simple.
+- Ship the OFL licence text alongside the font file.
+- Used for: large page titles (when the Dot font option is on), the
+  lock screen clock, dot-matrix widgets and the community widget kit.
