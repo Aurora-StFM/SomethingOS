@@ -27,6 +27,53 @@ All three layouts share the same clock and the same widget grid.
   - Needs our `frameworks_base` fork.
 - **Widgets:** see [widgets.md](widgets.md).
 
+## Clock faces
+
+The user picks a clock face in a **Clock face** sheet (lock screen edit
+mode, Cancel / Done at the top), with the lock screen previewed above it.
+Based on NothingOS 5's options.
+
+### Faces
+
+| Face | Description |
+| --- | --- |
+| Serif | large high-contrast serif digits, date above (the default) |
+| Rounded bold | heavy, rounded geometric digits |
+| Info line | monospace text line: day, date and month in pills, the time with a block cursor, then temperature and weather condition |
+| Dot matrix | large dot-matrix digits, with some dots dimmed for depth |
+| Analogue | wide, oval watch face with fine tick marks and a red second hand |
+| Thin | thin sans-serif digits with a small weather line below |
+| Segmented | blocky digits built from square grid segments |
+| Dot info | small dot-matrix time with date and weather lines below, in the dot font |
+| Extended | very wide, bold rounded digits |
+| Wireframe | thin, angular outline digits |
+| Pixel | chunky rounded pixel-style digits |
+
+### Options
+
+- **Size:** large (expanded) or small (compact).
+- **Alignment:** anchor the clock and notifications to the **centre** or the
+  **left** of the screen. On tablets in landscape this applies within the
+  left column.
+- **Colour:** "default" (no tint) or one of a row of colours taken from the
+  wallpaper, scrollable for more.
+
+### How to build it
+
+- All faces ship in one SomethingOS clock plugin; SystemUI's clock registry
+  supports several faces from one plugin.
+- The face carousel, size and colour choices map onto what the Wallpaper &
+  style app's clock picker already offers for clock plugins (face list,
+  size, colour from the wallpaper palette). Restyle it as the sheet above.
+- **Alignment** isn't a stock option: it's a setting read by our lock screen
+  layouts (see Layouts above).
+- **Fonts:** every face needs an open-licence font or custom-drawn digits;
+  none of Nothing's fonts can be used. The dot faces use Doto (see
+  [settings.md](settings.md#fonts)); the others need suitable OFL fonts,
+  chosen when each face is built.
+- Faces showing weather use the same weather provider as the widgets (see
+  [widgets.md](widgets.md)).
+
 ## PIN entry
 
 ![Tablet PIN entry sketch, landscape and portrait](pin-entry-tablet.png)
