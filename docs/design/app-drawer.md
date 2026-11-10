@@ -12,8 +12,26 @@
   Travel and so on; see [nothingos-reference.md](nothingos-reference.md)):
   - landscape: 3 columns, 3 rows visible;
   - portrait: 3 columns, 4 rows visible.
+- The category cards **scroll vertically** inside the card when there are
+  more than fit.
 - **Search bar** pinned at the bottom of the card, with a **⋮ menu** that
-  opens the app drawer and search settings.
+  opens the app drawer and search settings. When the keyboard opens, the
+  card stays where it is and the **search bar jumps to the top** of the
+  card, above the results, so the keyboard doesn't cover it.
+
+### Opening a category
+
+As in NothingOS:
+
+- Each category card shows three large icons plus a small cluster of the
+  rest.
+- Tapping a card fades and blurs the drawer behind, and the category opens
+  as an overlay: a large title (e.g. "Others") rising into place from the
+  card, with all its apps below in a grid, icons with labels.
+- Tapping outside it, or going back, reverses the animation and returns to
+  the drawer at the same scroll position.
+- On tablets the overlay fills the drawer card's area, so the dock and
+  widget area stay in view (dimmed).
 
 Applies to the square grid layout; see [home-screen.md](home-screen.md).
 
@@ -30,6 +48,9 @@ Applies to the square grid layout; see [home-screen.md](home-screen.md).
   - add a bundled list mapping common apps to categories;
   - fall back to "Others";
   - let the user move an app to another category.
+- **Opening a category** behaves much like opening a Launcher3 folder (an
+  animated container growing from the icon), so it can reuse the folder
+  open/close animation with a blurred background.
 
 ## App drawer & Search settings
 
@@ -61,11 +82,3 @@ Opened from the ⋮ menu on the search bar. Modelled on NothingOS's page:
   settings, contacts and files means adding a search provider for each.
 - **Search engine:** web searches open in the browser using the chosen
   engine; no account or Google service involved.
-
-## Open questions
-
-- With more categories than fit, does the card scroll vertically?
-- Tapping a category: does it expand inside the card, or open as a pop-up?
-- Searching in landscape: the keyboard covers the lower part of the screen,
-  including the search bar. Does the card shrink to sit above the keyboard,
-  or does the search bar move to the top while typing?
