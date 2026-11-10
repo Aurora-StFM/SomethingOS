@@ -35,6 +35,52 @@ then the Glyph features grouped below.
 On the Phone (1), which has light strips but no matrix, matrix-only tools
 (Glyph Toys) are hidden or adapted.
 
+## Phone (1) reference: NothingOS 3.2
+
+The Phone (1) never got NothingOS 5's Glyph app; its last Glyph settings
+(NothingOS 3.2) look different:
+
+- **Title** "Glyph Interface".
+- **Top:** a card with an outline of the Phone (1)'s back and a brightness
+  slider, beside two cards: **Ringtones** (current ringtone) and
+  **Notifications** (current sound, or off).
+- **Glyph lights** master toggle (wide pill).
+- **Features:** **Flip to Glyph** ("Silence on demand", toggle) and
+  **Composer** ("Create your own ringtones", a separate app).
+- **Visual feedback:** **Charging meter** ("Wiggle for progress"),
+  **Google Assistant** ("Visual response"), **Music visualisation** ("Give
+  life to the party"; its own page with a preview animation, a toggle and
+  an explanation), each a card with a toggle.
+- **Turn off automatically:** **Bedtime schedule** (e.g. 22:00–07:00 on
+  weekdays).
+- Epilepsy and light-sensitivity warning.
+- **Ringtone / notification picker:** sounds grouped into collections,
+  swiped between. Each collection is a horizontal carousel of Phone (1)
+  back previews that play the sound's light pattern, with the sound's name
+  and position ("3/10") below, a **Sound only** toggle ("Glyph lights will
+  be disabled") and **Save** at the top right.
+
+### SomethingOS on the Phone (1)
+
+The SomethingOS Glyph app uses the NothingOS 5 layout on every device, with
+the sections filled from what the device supports. On the Phone (1):
+
+| NothingOS 3.2 (Phone (1)) | SomethingOS Glyph app |
+| --- | --- |
+| Glyph lights toggle, brightness | hero and brightness at the top |
+| Ringtones, Notifications pickers | Sounds tab, with the carousel picker and Sound only toggle |
+| Flip to Glyph | Triggers |
+| Charging meter, Music visualisation | Triggers (both already in ParanoidGlyph) |
+| Google Assistant visual response | Triggers, as a generic voice assistant response, shown only when an assistant is installed |
+| Bedtime schedule | a "Turn off automatically" option, ideally tied to Android's Bedtime mode instead of its own schedule |
+| Composer | later; a separate tool for making patterns, possibly shared with the Glyph Builder |
+| Essential Notifications, Glyph Timer, Volume indicator | added from NothingOS 5 (Timer and Essential Notifications are new work) |
+| Glyph Toys | hidden: no matrix |
+
+Sounds: the picker can only offer ringtones and patterns we're allowed to
+ship (those LineageOS already includes, or our own). Nothing's ringtone
+collections are not copied.
+
 ## GlyphLike: Pseudo Glyph (devices without Glyph lights)
 
 Working name: **GlyphLike** (may change).
