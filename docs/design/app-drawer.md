@@ -31,6 +31,37 @@ Applies to the square grid layout; see [home-screen.md](home-screen.md).
   - fall back to "Others";
   - let the user move an app to another category.
 
+## App drawer & Search settings
+
+Opened from the ⋮ menu on the search bar. Modelled on NothingOS's page:
+
+- **Drawer layout:**
+  - **Default:** a suggestions row, then all apps in a plain alphabetical
+    grid.
+  - **Smart:** a suggestions row, then the category cards.
+- **Show app suggestions:** the suggestions row at the top.
+- **Show hidden icons:** whether apps the user has hidden appear in the
+  drawer.
+- **Search:**
+  - **Swipe up to start search:** open the keyboard straight away when the
+    drawer opens.
+  - **Search results settings:** what search covers (apps, settings,
+    contacts, files and so on).
+  - **Default search engine:** which engine handles web searches.
+
+### How to build it
+
+- **Default layout** is Launcher3's stock app drawer.
+- **App suggestions:** Launcher3's suggestions row is normally filled by
+  Google's on-device prediction service, which LineageOS doesn't have. We'd
+  write a simple on-device predictor from recent and frequent app usage.
+- **Hidden apps:** Lineage's launcher (Trebuchet) may already support hiding
+  apps; check its 24.0 source before writing our own.
+- **Search scope:** stock Launcher3 search only finds apps. Searching
+  settings, contacts and files means adding a search provider for each.
+- **Search engine:** web searches open in the browser using the chosen
+  engine; no account or Google service involved.
+
 ## Open questions
 
 - With more categories than fit, does the card scroll vertically?
