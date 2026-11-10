@@ -26,7 +26,20 @@ Split screen is started from the card's drop-down menu, as in NothingOS:
    another app to use split screen" and **Cancel**.
 4. Scroll the recents and tap a second app; both open side by side.
 
-Pop-Up View opens the app as a floating window over whatever is on screen.
+### Pop-Up View
+
+Based on NothingOS 5:
+
+- Chosen from the card's drop-down menu (App info, Pop-Up View, Clear;
+  Split screen when the app supports it).
+- The app opens as a **floating window** with rounded corners over the home
+  screen or another app.
+- A slim **top bar** on the window: **–** (minimise) on the left, a drag
+  handle in the middle, **×** (close) on the right.
+- Drag the bar to move the window; drag a corner to resize it.
+- **Minimise** shrinks it into a small floating preview at the screen edge.
+  Tapping the preview shows close and mute buttons; tapping again restores
+  the window.
 
 ## Taskbar / dock
 
@@ -48,7 +61,9 @@ taskbar; navigation uses the normal gesture bar.
   the pill drop-down; Clear replaces swiping a card away (or works alongside
   it).
 - **Pop-Up View:** maps onto Android's floating window support (freeform /
-  desktop windowing on large screens). Check what LineageOS 24.0 enables on
-  the Tab S6 Lite.
+  desktop windowing on large screens), which already provides a caption
+  bar, moving and resizing. The minimised preview is closest to Android's
+  picture-in-picture-style window shrinking and needs the most new work.
+  Check what LineageOS 24.0 enables on the Tab S6 Lite and the Phone (1).
 - **No taskbar in apps:** Launcher3 shows a taskbar in apps on tablets by
   default; we turn it off and keep the gesture bar, like on phones.

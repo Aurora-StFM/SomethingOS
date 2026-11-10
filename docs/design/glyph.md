@@ -5,6 +5,36 @@ SomethingOS **Glyph** app, modelled on the Glyph page introduced in
 NothingOS 5.0: a live preview of the device's Glyph lights at the top,
 then the Glyph features grouped below.
 
+## Layout (from NothingOS 5)
+
+- **Title** "Glyph" with a settings gear at the top right.
+- **Hero:** an illustration of the back of the phone with its Glyph lights,
+  which light up to preview what's being changed. Below it, a segmented
+  **brightness** slider.
+- **System**
+  - **Essential Notifications** ("Filter what's important"): rules for which
+    apps and contacts light the Glyph and keep a light on until seen. First
+    use shows a three-step introduction; afterwards a list of rules (per
+    app or contact, each with a toggle) and a **New rule** button.
+- **Tools** (two-up cards with toggles)
+  - **Always-on Glyph Toy** (e.g. a digital clock) — needs a Glyph matrix.
+  - **Glyph Timer** (visual countdown).
+- **Triggers**
+  - **Flip to Glyph** (silence on demand by turning the phone face down).
+  - **Volume indicator** (audio level at a glance).
+  - **Glyph Progress** (third-party integrations, e.g. delivery or ride
+    progress).
+- A short epilepsy and light-sensitivity warning at the bottom.
+- A floating **bottom bar with two tabs**:
+  - **Glyph** (the page above);
+  - **Sounds**: Notifications / Ringtones switch; a choice between
+    **Generative** (Glyph patterns generated automatically per app) and
+    **Classic**; a default engine choice; a note that ringtones have
+    matching Glyph patterns.
+
+On the Phone (1), which has light strips but no matrix, matrix-only tools
+(Glyph Toys) are hidden or adapted.
+
 ## What LineageOS already has
 
 LineageOS's Phone (1) sources (`hardware/nothing`) ship **ParanoidGlyph**,
@@ -30,7 +60,15 @@ already drives the lights for:
   make ourselves; don't copy new patterns or sounds from NothingOS.
 - Hide the app on devices without Glyph lights.
 
-## Open questions
+### Mapping to ParanoidGlyph
 
-- Which NothingOS 5.0 Glyph features are wanted first? Screenshots of the
-  NothingOS 5.0 Glyph app will help decide the layout.
+| NothingOS 5 feature | ParanoidGlyph today |
+| --- | --- |
+| Essential Notifications | per-app notification patterns; rules and "keep lit until seen" are new |
+| Flip to Glyph | yes |
+| Volume indicator | yes |
+| Glyph Progress | third-party service (Glyph developer kit) |
+| Glyph Timer | new |
+| Always-on Glyph Toy | matrix only; not on the Phone (1) |
+| Sounds / ringtone patterns | ringtone and notification patterns exist; Generative is new |
+| Charging, music visualiser | yes (not shown on NothingOS's page; keep them) |

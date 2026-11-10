@@ -13,11 +13,32 @@ same side of the screen when the tablet is turned 180°:
 
 ## Styling
 
-To follow, from NothingOS screenshots.
+Based on NothingOS 5.
+
+**Collapsed** (what appears when pressing the volume buttons):
+
+- A round **ringer mode** button on top (ring / vibrate / mute); tapping it
+  cycles through the modes.
+- Below it, a tall dark **pill slider** for the active stream. The track is
+  a column of dots; the filled part is a solid white bar. The stream's icon
+  (e.g. a music note) sits at the bottom of the bar.
+- A **‹** chevron at the bottom of the pill expands the panel.
+
+**Expanded:**
+
+- The ringer modes become a horizontal pill of three buttons (mute,
+  vibrate, ring) with the active one highlighted.
+- Below, a card with **one tall dot-track slider per stream** side by side
+  (media, alarm, notification, ring/call), each with its icon underneath.
+- **SEE MORE** at the bottom opens Sound and vibration settings.
+- A separate round **Live Caption** button sits below the card.
 
 ## How to build it
 
-- SystemUI's volume dialog, restyled.
+- SystemUI's volume dialog, restyled. Android's dialog already has a
+  ringer mode button, a main slider and an expand action showing all
+  streams, so the structure matches; the dot-track sliders and pill shapes
+  are new styling.
 - Positioning is a SystemUI change: place the dialog on the rocker's edge
   for the current orientation, ignoring 180° rotation. The rocker's
   position is a per-device value (in `products/`), since it differs
