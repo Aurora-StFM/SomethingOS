@@ -61,13 +61,20 @@ Plan:
 
 ### Edit mode
 
-- Android already has the long-press entry: a "Customise lock screen"
-  button that opens the Wallpaper & style app after unlocking. We keep the
-  gesture and point it at our edit mode.
-- Edit mode is a full-screen screen showing a live preview of the lock
-  screen (SystemUI can render one for other apps; Wallpaper & style uses
-  this) with our sheet over it. Widget changes go through the hub's widget
-  storage, clock changes through the clock settings.
+NothingOS does this the same way Android does: the long-press button opens
+a separate customisation app ("Nothing Wallpaper"), not a screen inside
+SystemUI. We follow that:
+
+- Android's long-press "Customise lock screen" button already launches the
+  wallpaper and customisation app (Wallpaper & style, the AOSP
+  `ThemePicker` / `WallpaperPicker2` apps) after unlocking.
+- SomethingOS forks that app into its own customisation app (working name
+  **Something Wallpaper**) that holds lock screen edit mode, the Widgets and
+  Clock face sheets, wallpapers, and the Theme & Style page (see
+  [theme-and-style.md](theme-and-style.md)).
+- It shows a live preview of the lock screen, which SystemUI already
+  renders for this app, with our sheets over it. Widget changes go through
+  the hub's widget storage, clock changes through the clock settings.
 
 ### SomethingOS widgets are ordinary Android widgets
 
