@@ -8,7 +8,20 @@ SomethingOS is an independent community project. It is not affiliated with,
 endorsed by, or based on software from Nothing Technology Limited, and it
 does not ship any of Nothing's fonts, icons, wallpapers, sounds or other assets.
 
-> **Status: early development.** Nothing here is ready for daily use yet.
+> [!WARNING]
+> **Not recommended for daily use.**
+>
+> - **Early development.** Expect bugs, missing features and breaking
+>   changes between builds. Back up your data before installing.
+> - **Built with heavy use of AI tools.** Much of the code and documentation
+>   is written with AI assistance and reviewed by a single developer. It has
+>   not had the testing or review a mature ROM gets.
+> - **No Play Integrity.** Like most custom ROMs, SomethingOS does not pass
+>   Google's Play Integrity checks. Banking apps, Google Wallet / contactless
+>   payments, some streaming apps and some games may refuse to run.
+> - **Unlocked bootloader.** Installing any custom ROM means unlocking the
+>   bootloader, which may void your warranty and, on Samsung devices,
+>   permanently trips Knox.
 
 ## Supported devices
 
@@ -36,9 +49,25 @@ LineageOS 22.2 (Android 15) device sources instead.
 Other Tab S6 Lite models are **not** supported. That includes the original
 2020 Exynos model (SM-P610/P615) and the 2024 model, which use different hardware.
 
-**More devices are planned.** The SomethingOS layer is kept device-agnostic
-so it can be added to other LineageOS-supported devices later, and x86
-builds are a long-term goal.
+### Planned devices
+
+Not buildable yet; listed so the plan is visible.
+
+| Device | Codename | SoC | LineageOS status |
+| --- | --- | --- | --- |
+| OnePlus Nord CE 5G | `ebba` | Snapdragon 750G | official, LineageOS 24.0 sources available |
+| Nokia 8 Sirocco | `A1N` | Snapdragon 835 | no LineageOS sources; would need a port |
+
+The Nord CE 5G is officially supported by LineageOS 24.0, so adding it
+should follow the same steps as the Phone (1).
+
+The Nokia 8 Sirocco has no LineageOS device tree. The closest starting point
+is the Nokia 8 (`NB1`), which has the same chip and was supported by
+LineageOS up to 22.2, but porting it to the Sirocco and to Android 17 is a
+much larger job.
+
+The SomethingOS layer is kept device-agnostic so more LineageOS-supported
+devices can be added later, and x86 builds are a long-term goal.
 
 ## Repository layout
 
