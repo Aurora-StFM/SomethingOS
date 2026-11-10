@@ -49,9 +49,9 @@ Sizes and proportions in the sketch are provisional.
   other. We show the blurred lock screen in that other half instead.
 - Portrait uses the standard centred layout; the clock and widgets sliding
   up is an animation on the lock screen side as the PIN screen appears.
-- Stock Android lets the user double-tap the empty side to move the PIN pad
-  there for one-handed use. Keep or drop this; if kept, the blurred lock
-  screen moves to the other side.
+- The number pad is locked to the right in landscape for now. Stock
+  Android lets the user double-tap the empty side to move the PIN pad there
+  for one-handed use; we disable that.
 - The blur uses Android's window blur, which depends on the device's GPU
   support. Check that it's enabled on the Tab S6 Lite; otherwise fall back
   to a dimmed, non-blurred lock screen.
