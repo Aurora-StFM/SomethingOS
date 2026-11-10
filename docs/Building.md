@@ -13,8 +13,10 @@ an Ubuntu host, skip step 1 and run everything directly.
 - **Disk:** about **400 GB free**: roughly 250–300 GB for the source and
   one device's build output, plus 50–100 GB for the compiler cache. An SSD
   makes a big difference.
-- **RAM:** **32 GB** at minimum; more is better. With 32 GB, also have
-  swap or zram (Fedora enables zram by default).
+- **RAM:** **32 GB** at minimum; more is better. Add a large swapfile on
+  top (see "If the build is killed" below): one early step, `soong_build`,
+  needs a lot of memory at once, and even 64 GB with Fedora's default 8 GB
+  of zram swap wasn't enough on its own.
 - **CPU:** any modern multi-core CPU. The first build takes a few hours;
   later builds are much faster thanks to the cache.
 - **Internet:** the first sync downloads around 100 GB.
@@ -138,6 +140,32 @@ m bacon
 The result is in `out/target/product/$DEVICE/`: a `lineage-24.0-…-UNOFFICIAL-$DEVICE.zip`
 plus the boot and recovery images needed to install it. (The zip is still
 named after LineageOS for now.)
+
+## If the build is killed
+
+If the build stops with `Killed` and `exit=137 # signal:killed`, the system
+ran out of memory and killed a build step (usually `soong_build`). Check
+what killed it, on the host:
+
+```bash
+journalctl -b --since "-15min" | grep -iE "oom|killed process"
+```
+
+- `The kernel OOM killer killed some processes` / `oom_reaper` means memory
+  really ran out. Add swap.
+- `systemd-oomd` means Fedora's early-warning killer stepped in. Add swap,
+  and stop it for the build with `sudo systemctl stop systemd-oomd` (it
+  starts again on reboot).
+
+Add a 32 GB swapfile on Fedora (Btrfs `/home`):
+
+```bash
+sudo btrfs filesystem mkswapfile --size 32g /home/swapfile
+sudo swapon /home/swapfile
+```
+
+This lasts until reboot. Close memory-heavy apps such as browsers while
+building, then run the build commands again; finished steps are skipped.
 
 ## Device notes
 
