@@ -71,14 +71,21 @@ git lfs install
 ## 3. Turn on the compiler cache
 
 ```bash
+mkdir -p ~/.ccache
 echo 'export USE_CCACHE=1' >> ~/.bashrc
 echo 'export CCACHE_EXEC=/usr/bin/ccache' >> ~/.bashrc
+echo "export CCACHE_DIR=$HOME/.ccache" >> ~/.bashrc
 source ~/.bashrc
-ccache -M 50G
+ccache -M 100G
 ```
 
 ccache keeps compiled results, so rebuilding after small changes takes
 minutes instead of hours.
+
+`CCACHE_DIR` is required. The Android build runs compile steps in a
+sandbox (as user `nobody`, on a host named `android-build`), where
+ccache's default location in your home folder isn't available; without
+`CCACHE_DIR` every compile fails with `ccache: error: Not a directory`.
 
 ## 4. Get the source
 
