@@ -81,6 +81,17 @@ Sounds: the picker can only offer ringtones and patterns we're allowed to
 ship (those LineageOS already includes, or our own). Nothing's ringtone
 collections are not copied.
 
+**SomethingOS sound set:** custom ringtones, notification sounds and system
+sounds in the same spirit as Nothing's (short, synthetic, minimal), each
+with a matching Glyph pattern.
+
+- Original compositions in that style, not recreations: new melodies and
+  rhythms, no sampling or tracing of Nothing's sounds, and our own names.
+  A melody is protected even when re-recorded, so "close enough" should
+  mean the same feel, not the same tune.
+- Glyph patterns are made for each sound (later with the Composer).
+- Released under an open licence alongside the rest of SomethingOS.
+
 ## GlyphLike: Pseudo Glyph (devices without Glyph lights)
 
 Working name: **GlyphLike** (may change).
