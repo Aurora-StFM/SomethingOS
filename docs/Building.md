@@ -91,7 +91,7 @@ DEVICE=Spacewar        # or gta4xlveu
 curl -o .repo/local_manifests/somethingos.xml "$BASE/somethingos.xml"
 curl -o ".repo/local_manifests/$DEVICE.xml" "$BASE/$DEVICE.xml"
 
-repo sync -c -j8 --no-clone-bundle
+repo sync -c -j4 --no-clone-bundle
 ```
 
 - `repo init` downloads the list of repositories LineageOS 24.0 consists
@@ -100,6 +100,13 @@ repo sync -c -j8 --no-clone-bundle
   `vendor/somethingos`) and your device's device, kernel and vendor trees.
 - `repo sync` downloads everything. This takes hours the first time. If it
   fails partway, just run it again; it carries on where it stopped.
+- Keep `-j` low (around 4). Google's Android source server rate-limits
+  anonymous downloads; with more parallel downloads the sync fails with
+  `HTTP 429` / `RESOURCE_EXHAUSTED` errors. If that happens, wait 10–15
+  minutes and run `repo sync` again. If it keeps happening, sign in at
+  <https://android.googlesource.com/new-password> and run the command it
+  shows (it saves a login cookie to `~/.gitcookies`), which raises the
+  limit.
 
 Set `DEVICE` to the codename from the
 [supported devices table](../README.md#supported-devices).
