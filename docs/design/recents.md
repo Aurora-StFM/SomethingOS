@@ -6,6 +6,8 @@
 
 - Recent apps as a **2×2 grid of cards**: wide cards in landscape, tall
   cards in portrait, matching the screen's shape.
+- With more than four recent apps, the grid **always scrolls horizontally**,
+  in both orientations.
 - Each card has a **header pill** at the top left: app icon, app name and a
   chevron. Tapping it opens a drop-down menu:
   - **App info**
@@ -15,9 +17,16 @@
 
 ## Split screen and Pop-Up View
 
-- Split screen is started from the card's drop-down menu, as in NothingOS.
-- Pop-Up View opens the app as a floating window over whatever is on
-  screen.
+Split screen is started from the card's drop-down menu, as in NothingOS:
+
+1. Tap the header pill on a recents card and choose **Split screen**.
+2. That app moves into its half of the screen as a placeholder showing its
+   icon (top half in portrait; on tablets in landscape, the left half).
+3. The other recents cards stay visible, with a bar at the bottom: "Choose
+   another app to use split screen" and **Cancel**.
+4. Scroll the recents and tap a second app; both open side by side.
+
+Pop-Up View opens the app as a floating window over whatever is on screen.
 
 ## Taskbar / dock
 
@@ -31,6 +40,9 @@ taskbar; navigation uses the normal gesture bar.
 - **Grid:** on tablets Launcher3 already shows recents as a grid (one large
   card plus smaller ones in two rows). The even 2×2 grid is a change to that
   layout.
+- **Split screen flow:** this is Launcher3's own "split select" mode
+  (first app parked, pick a second, instruction bar with Cancel), so it's
+  mostly restyling.
 - **Drop-down menu:** Launcher3 already has a per-card menu opened from the
   app icon, with App info and Split screen among its entries. Restyle it as
   the pill drop-down; Clear replaces swiping a card away (or works alongside
@@ -40,11 +52,3 @@ taskbar; navigation uses the normal gesture bar.
   the Tab S6 Lite.
 - **No taskbar in apps:** Launcher3 shows a taskbar in apps on tablets by
   default; we turn it off and keep the gesture bar, like on phones.
-
-## Open questions
-
-- With more than four recent apps, does the grid scroll vertically or
-  horizontally?
-- Split screen flow after choosing it from the menu: pick the second app
-  from the remaining recents cards, the app drawer, or both? (NothingOS
-  reference recording to follow.)
