@@ -28,6 +28,15 @@ for it. First contents:
 
 - **Experimental → Dot font:** use the dot-matrix font for titles.
 
+The goal is to add most, if not all, of NothingOS's special features over
+time, built up as the ROM matures rather than all at once:
+
+- Experimental features (starting with Dot font)
+- Gestures
+- RAM Booster
+- Pop-up view (see [recents.md](recents.md))
+- Game Mode
+
 ## About device
 
 A card layout replacing the standard list. Needs a custom page in our
