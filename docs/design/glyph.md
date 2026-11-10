@@ -70,8 +70,8 @@ How it fits:
 Users design their own GlyphLike layout instead of getting a fixed one:
 
 - A **library of Glyph elements** to choose from: shapes such as straight
-  and curved strips, rings and ring segments, dots and small dot-matrix
-  blocks.
+  and curved strips, rings and ring segments, dots, and a **Glyph Matrix**
+  (below).
 - Up to **5 elements** per layout, placed on a **grid** over the
   always-on display to the user's liking (moved, and possibly resized or
   rotated).
@@ -81,6 +81,54 @@ Users design their own GlyphLike layout instead of getting a fixed one:
 - Five slots lines up with the Nothing Phone (1), whose lights are grouped
   into five zones. Phone (1) patterns could map straight onto a GlyphLike
   layout, and a preset layout could imitate the Phone (1)'s back.
+
+#### Glyph Matrix element
+
+A replica of the **Nothing Phone (4a) Pro's Glyph Matrix**: a circular
+matrix of 137 dots within a 13×13 grid.
+
+- Placed like other elements but **relatively large: 2×2 or 3×3 cells**,
+  and drawn **dim**.
+- The 4a Pro version is the model rather than the Phone (3)'s (25×25)
+  because the 4a Pro has no Glyph button: its Glyph Toys are AOD-only,
+  which is exactly what GlyphLike is.
+- Shows Glyph Toys (clock, battery, timer and so on), and richer
+  notifications such as app icons.
+- Most demanding element for battery and burn-in; the shift setting matters
+  most here.
+
+#### Third-party Glyph Toys on the matrix (future)
+
+Goal: third-party Glyph Toys made for the 4a Pro run on the GlyphLike
+matrix. From Nothing's public
+[GlyphMatrix Developer Kit](https://github.com/Nothing-Developer-Programme/GlyphMatrix-Developer-Kit)
+documentation:
+
+- A Glyph Toy is a service in its app with the intent action
+  `com.nothing.glyph.TOY` and metadata (name, preview image, summary,
+  `aod_support`). The system finds toys by that action, binds the one the
+  user picks, and sends it events; 4a Pro toys must declare AOD support.
+- Toys and apps draw by sending frames through the SDK to a system service
+  in the package `com.nothing.thirdparty`, after registering for a device
+  (`Glyph.DEVICE_25111p` for the 4a Pro, 13×13 frames).
+
+Work needed:
+
+1. **A system service that stands in for Nothing's**, answering the SDK's
+   connection and receiving frames, then drawing them on the GlyphLike
+   matrix. LineageOS's ParanoidGlyph already does this for Nothing's older
+   Glyph Developer Kit on the Phone (1), so there's a precedent and possibly
+   code to reuse.
+2. **Toy management** in our Glyph app: list installed toys, let the user
+   pick, bind the chosen one and send it AOD events.
+3. **Device detection:** the SDK must believe it's on a 4a Pro. This should
+   be answered only to the SDK's checks, never by changing the phone's
+   model system-wide (that breaks other apps and updates). How the SDK
+   detects the device isn't documented, so it has to be found by testing.
+
+Rules for this work: build only from the public documentation and observed
+behaviour. Nothing's SDK licence forbids decompiling or reverse-engineering
+it, and we don't ship the SDK; third-party apps bring their own copy.
 
 Decided:
 
