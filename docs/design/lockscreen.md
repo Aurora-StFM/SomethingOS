@@ -29,13 +29,15 @@ All three layouts share the same clock and the same widget grid.
 
 ## PIN entry
 
-![Tablet PIN entry sketch, landscape](pin-entry-tablet.png)
+![Tablet PIN entry sketch, landscape and portrait](pin-entry-tablet.png)
 
-Landscape: the screen splits in two.
-
-- **Left:** the lock screen (clock and widgets) stays where it was, with the
-  wallpaper and elements blurred behind.
-- **Right:** a lock icon, "Enter PIN" and the number pad.
+- **Landscape:** the screen splits in two.
+  - **Left:** the lock screen (clock and widgets) stays where it was, and it
+    and the wallpaper are blurred.
+  - **Right:** a lock icon, "Enter PIN" and the number pad.
+- **Portrait:** the clock and widgets slide up and out of view, the
+  wallpaper is blurred, and the lock icon, "Enter PIN" and number pad sit
+  centred on the screen.
 
 Sizes and proportions in the sketch are provisional.
 
@@ -45,6 +47,8 @@ Sizes and proportions in the sketch are provisional.
   for large screens in landscape (`BouncerOverlayLayout.BESIDE_USER_SWITCHER`):
   the PIN pad on one side, and the user switcher or empty space on the
   other. We show the blurred lock screen in that other half instead.
+- Portrait uses the standard centred layout; the clock and widgets sliding
+  up is an animation on the lock screen side as the PIN screen appears.
 - Stock Android lets the user double-tap the empty side to move the PIN pad
   there for one-handed use. Keep or drop this; if kept, the blurred lock
   screen moves to the other side.
