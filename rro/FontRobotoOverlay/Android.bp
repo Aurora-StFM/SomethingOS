@@ -1,0 +1,12 @@
+//
+// SPDX-FileCopyrightText: 2026 The SomethingOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Switches the system UI font back to Roboto. Not static: the font picker
+// turns it on (Roboto) or off (Geist, the default).
+runtime_resource_overlay {
+    name: "FontRobotoOverlay",
+    theme: "FontRoboto",
+    product_specific: true,
+}

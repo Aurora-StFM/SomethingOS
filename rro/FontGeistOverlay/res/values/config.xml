@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The SomethingOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string name="config_bodyFontFamily" translatable="false">somethingos-sans</string>
+    <string name="config_bodyFontFamilyMedium" translatable="false">somethingos-sans-medium</string>
+    <string name="config_headlineFontFamily" translatable="false">somethingos-sans</string>
+    <string name="config_headlineFontFamilyMedium" translatable="false">somethingos-sans-medium</string>
+</resources>

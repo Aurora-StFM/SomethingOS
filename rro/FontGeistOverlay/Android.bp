@@ -1,0 +1,11 @@
+//
+// SPDX-FileCopyrightText: 2026 The SomethingOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Makes Geist the default system UI font. Static, so it's always applied;
+// its priority is above LineageOS's Google Sans Flex overlay (priority 1).
+runtime_resource_overlay {
+    name: "FontGeistOverlay",
+    product_specific: true,
+}

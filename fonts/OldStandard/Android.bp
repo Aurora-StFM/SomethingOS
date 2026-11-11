@@ -1,0 +1,35 @@
+//
+// SPDX-FileCopyrightText: 2026 The SomethingOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+package {
+    default_applicable_licenses: ["vendor_somethingos_fonts_oldstandard_license"],
+}
+
+license {
+    name: "vendor_somethingos_fonts_oldstandard_license",
+    visibility: [":__subpackages__"],
+    license_kinds: ["SPDX-license-identifier-OFL"],
+    license_text: ["OFL.txt"],
+}
+
+// Old Standard TT by Alexey Kryukov (unmodified, from Google Fonts).
+// SomethingOS's serif font. Installed to /product/fonts.
+prebuilt_font {
+    name: "OldStandard-Regular.ttf",
+    src: "OldStandard-Regular.ttf",
+    product_specific: true,
+}
+
+prebuilt_font {
+    name: "OldStandard-Italic.ttf",
+    src: "OldStandard-Italic.ttf",
+    product_specific: true,
+}
+
+prebuilt_font {
+    name: "OldStandard-Bold.ttf",
+    src: "OldStandard-Bold.ttf",
+    product_specific: true,
+}

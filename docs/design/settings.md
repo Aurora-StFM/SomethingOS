@@ -97,21 +97,32 @@ maximum). At those settings it is nearly identical to NDot.
 
 NothingOS uses two more font families.
 
-**Geist (sans-serif).** By Vercel, released under the **SIL Open Font
-License** with no Reserved Font Name, so SomethingOS ships Geist itself
-rather than a look-alike.
+**Geist (sans-serif): `somethingos-sans`.** By Vercel, released under the
+**SIL Open Font License** with no Reserved Font Name, so SomethingOS ships
+Geist itself rather than a look-alike.
 
 - NothingOS lets the user choose the **system font** in *Font and display
   size*: **Roboto** or **Geist**, each shown as an "Aa 123" preview card,
-  with Cancel / Apply. SomethingOS offers the same choice.
-- Built like LineageOS's Google Sans Flex: the font file in
-  `vendor/somethingos/fonts`, registered (e.g. as `somethingos-sans`) in
-  our overlays fork, plus a font overlay that makes it Android's UI font.
-  The Settings picker switches between font overlays.
+  with Cancel / Apply. SomethingOS offers the same two.
+- **Geist is the default.** `FontGeistOverlay` is a static overlay (always
+  on) that sets Android's UI font families to `somethingos-sans`. Its
+  priority (2) is above LineageOS's Google Sans Flex overlay (1), which it
+  replaces.
+- **Roboto** is `FontRobotoOverlay`, a switchable font overlay (category
+  `android.theme.customization.font`) that sets them back to `sans-serif`.
+  The picker enables it for Roboto and disables it for Geist. Until the
+  picker exists it can be tested with
+  `adb shell cmd overlay enable org.somethingos.overlay.font.roboto`.
+- Known gap: Android 16+ also uses separate "variable-display/headline/…"
+  font families built on Google Sans Flex for some Material 3 text. The
+  overlays don't change those; parts of the UI may stay in Google Sans
+  Flex until they're remapped.
 
-**NType (serif).** Nothing's own serif, used for titles such as the Glyph
-app's, "App drawer & Search" and "Nothing Machines (1)". It's proprietary,
-so it needs an open-licence replacement. Geist Serif doesn't resemble it.
-Candidates to compare against NothingOS screenshots: Instrument Serif,
-IBM Plex Serif, Newsreader, Young Serif, Fraunces, Source Serif 4,
-Gelasio, Literata, DM Serif Display, Courier Prime.
+**NType (serif): Old Standard TT, `somethingos-serif`.** NType is Nothing's
+own serif, used for titles such as the Glyph app's, "App drawer & Search"
+and "Nothing Machines (1)". It's proprietary; **Old Standard TT** (SIL
+OFL 1.1) is a close open-licence match (regular, italic and bold).
+
+All three families are registered in our fork of `packages/overlays/Lineage`
+(`fonts/etc/fonts_customization.xml`); the font files live in
+`vendor/somethingos/fonts/<Font>/` with their licences.

@@ -17,8 +17,20 @@ include vendor/somethingos/config/version.mk
 PRODUCT_PACKAGES += \
     SomethingFrameworkOverlay
 
-# Fonts: Doto dot-matrix font. Registered as the "somethingos-dot" family
-# in fonts_customization.xml, which lives in our fork of
-# packages/overlays/Lineage (see manifests/somethingos.xml).
+# Fonts (vendor/somethingos/fonts). Registered as font families in
+# fonts_customization.xml, which lives in our fork of packages/overlays/Lineage
+# (see manifests/somethingos.xml):
+#   somethingos-dot     Doto (dot-matrix)
+#   somethingos-sans    Geist (system UI font)
+#   somethingos-serif   Old Standard TT
 PRODUCT_PACKAGES += \
-    Doto-VF.ttf
+    Doto-VF.ttf \
+    Geist-VF.ttf \
+    OldStandard-Regular.ttf \
+    OldStandard-Italic.ttf \
+    OldStandard-Bold.ttf
+
+# System UI font: Geist by default; FontRobotoOverlay switches to Roboto
+PRODUCT_PACKAGES += \
+    FontGeistOverlay \
+    FontRobotoOverlay

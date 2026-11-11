@@ -1,0 +1,23 @@
+//
+// SPDX-FileCopyrightText: 2026 The SomethingOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+package {
+    default_applicable_licenses: ["vendor_somethingos_fonts_geist_license"],
+}
+
+license {
+    name: "vendor_somethingos_fonts_geist_license",
+    visibility: [":__subpackages__"],
+    license_kinds: ["SPDX-license-identifier-OFL"],
+    license_text: ["OFL.txt"],
+}
+
+// Geist by Vercel, https://github.com/vercel/geist-font (unmodified
+// variable font). Installed to /product/fonts.
+prebuilt_font {
+    name: "Geist-VF.ttf",
+    src: "Geist-VF.ttf",
+    product_specific: true,
+}
