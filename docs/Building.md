@@ -148,6 +148,23 @@ The result is in `out/target/product/$DEVICE/`: a `lineage-24.0-…-UNOFFICIAL-$
 plus the boot and recovery images needed to install it. (The zip is still
 named after LineageOS for now.)
 
+## Updating after manifest changes
+
+When SomethingOS's manifest changes (for example, a LineageOS repo is
+swapped for a SomethingOS fork), download it again and sync:
+
+```bash
+curl -o .repo/local_manifests/somethingos.xml \
+  https://raw.githubusercontent.com/Aurora-StFM/SomethingOS/somethingos-24.0/manifests/somethingos.xml
+repo sync -c --force-sync <path of the changed repo>
+```
+
+`repo` keeps its git data per folder in `.repo/projects/`. When a folder
+switches to a different repository, that data no longer matches and a
+normal sync refuses ("cannot overwrite a local work tree"); `--force-sync`
+replaces it. Only use it on folders where you haven't made your own changes.
+Check the result with `git -C <path> log -1 --oneline`.
+
 ## If the build is killed
 
 If the build stops with `Killed` and `exit=137 # signal:killed`, the system
