@@ -81,9 +81,11 @@ maximum). At those settings it is nearly identical to NDot.
 - It's registered as the font family **`somethingos-dot`** in
   `/product/etc/fonts_customization.xml`, so system apps can use it by name
   (`android:fontFamily="somethingos-dot"`, or `Typeface.create("somethingos-dot",
-  Typeface.NORMAL)`). Android reads only one such file, so ours replaces
-  LineageOS's and includes its contents; re-copy LineageOS's part on each
-  rebase.
+  Typeface.NORMAL)`). Android reads only one such file and LineageOS already
+  ships it (in `packages/overlays/Lineage`), so the entry is added in our
+  fork of that repo,
+  [Aurora-StFM/android_packages_overlays_Lineage](https://github.com/Aurora-StFM/android_packages_overlays_Lineage)
+  (branch `somethingos-24.0`).
 - Ship the OFL licence text alongside the font file.
 - Used for: large page titles (when the Dot font option is on), the
   lock screen clock, dot-matrix widgets and the community widget kit.

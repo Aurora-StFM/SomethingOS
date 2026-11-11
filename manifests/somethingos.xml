@@ -15,4 +15,14 @@
              path="vendor/somethingos"
              remote="somethingos"
              revision="somethingos-24.0" />
+
+    <!-- LineageOS repos replaced by SomethingOS forks -->
+
+    <!-- Overlays: adds the somethingos-dot font family to
+         fonts_customization.xml (Android reads only one such file). -->
+    <remove-project name="LineageOS/android_packages_overlays_Lineage" />
+    <project name="android_packages_overlays_Lineage"
+             path="packages/overlays/Lineage"
+             remote="somethingos"
+             revision="somethingos-24.0" />
 </manifest>
