@@ -95,12 +95,23 @@ maximum). At those settings it is nearly identical to NDot.
 
 ### Other fonts
 
-NothingOS also uses a sans-serif and several serif fonts. Replacements are
-still to be chosen.
+NothingOS uses two more font families.
 
-- **Geist** (sans and mono, by Vercel): NothingOS's sans-serif. Geist is
-  released under the **SIL Open Font License** with no Reserved Font Name,
-  so SomethingOS can ship Geist itself rather than a look-alike. The
-  family also includes Geist Serif and Geist Pixel.
-- **Serif fonts:** still to be identified and matched with open-licence
-  alternatives.
+**Geist (sans-serif).** By Vercel, released under the **SIL Open Font
+License** with no Reserved Font Name, so SomethingOS ships Geist itself
+rather than a look-alike.
+
+- NothingOS lets the user choose the **system font** in *Font and display
+  size*: **Roboto** or **Geist**, each shown as an "Aa 123" preview card,
+  with Cancel / Apply. SomethingOS offers the same choice.
+- Built like LineageOS's Google Sans Flex: the font file in
+  `vendor/somethingos/fonts`, registered (e.g. as `somethingos-sans`) in
+  our overlays fork, plus a font overlay that makes it Android's UI font.
+  The Settings picker switches between font overlays.
+
+**NType (serif).** Nothing's own serif, used for titles such as the Glyph
+app's, "App drawer & Search" and "Nothing Machines (1)". It's proprietary,
+so it needs an open-licence replacement. Geist Serif doesn't resemble it.
+Candidates to compare against NothingOS screenshots: Instrument Serif,
+IBM Plex Serif, Newsreader, Young Serif, Fraunces, Source Serif 4,
+Gelasio, Literata, DM Serif Display, Courier Prime.
