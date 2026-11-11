@@ -17,7 +17,8 @@ include vendor/somethingos/config/version.mk
 PRODUCT_PACKAGES += \
     SomethingFrameworkOverlay
 
-# Fonts: Doto dot-matrix font, registered as the "somethingos-dot" family
+# Fonts: Doto dot-matrix font. Registered as the "somethingos-dot" family
+# in fonts_customization.xml, which lives in our fork of
+# packages/overlays/Lineage (see manifests/somethingos.xml).
 PRODUCT_PACKAGES += \
-    Doto-VF.ttf \
-    somethingos_fonts_customization.xml
+    Doto-VF.ttf

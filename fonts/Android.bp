@@ -21,14 +21,3 @@ prebuilt_font {
     src: "Doto-VF.ttf",
     product_specific: true,
 }
-
-// Registers the font as the "somethingos-dot" font family. Takes the place
-// of LineageOS's fonts_customization.xml, whose contents it includes.
-prebuilt_etc {
-    name: "somethingos_fonts_customization.xml",
-    src: "fonts_customization.xml",
-    filename: "fonts_customization.xml",
-    product_specific: true,
-    overrides: ["fonts_customization.xml"],
-    licenses: ["Android-Apache-2.0"],
-}
