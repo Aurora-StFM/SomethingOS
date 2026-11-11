@@ -26,7 +26,8 @@ SomethingOS settings app. Android lets other apps inject entries into
 Settings (this is how Lineage adds its own), so no Settings fork is needed
 for it. First contents:
 
-- **Experimental → Dot font:** use the dot-matrix font for titles.
+- **Experimental → Dot font:** use the dot-matrix font for **Settings page
+  titles**. That's all it changes.
 
 The goal is to add most, if not all, of NothingOS's special features over
 time, built up as the ROM matures rather than all at once:
@@ -87,5 +88,19 @@ maximum). At those settings it is nearly identical to NDot.
   [Aurora-StFM/android_packages_overlays_Lineage](https://github.com/Aurora-StFM/android_packages_overlays_Lineage)
   (branch `somethingos-24.0`).
 - Ship the OFL licence text alongside the font file.
-- Used for: large page titles (when the Dot font option is on), the
-  lock screen clock, dot-matrix widgets and the community widget kit.
+- Used for: large Settings page titles (only when the Dot font option is
+  on). Also available to dot-matrix widgets and the community widget kit.
+  Not the lock screen's Dot matrix clock face, which uses a different dot
+  style (see [lockscreen.md](lockscreen.md#clock-faces)).
+
+### Other fonts
+
+NothingOS also uses a sans-serif and several serif fonts. Replacements are
+still to be chosen.
+
+- **Geist** (sans and mono, by Vercel): NothingOS's sans-serif. Geist is
+  released under the **SIL Open Font License** with no Reserved Font Name,
+  so SomethingOS can ship Geist itself rather than a look-alike. The
+  family also includes Geist Serif and Geist Pixel.
+- **Serif fonts:** still to be identified and matched with open-licence
+  alternatives.

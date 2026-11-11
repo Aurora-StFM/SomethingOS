@@ -68,9 +68,11 @@ Based on NothingOS 5's options.
 - **Alignment** isn't a stock option: it's a setting read by our lock screen
   layouts (see Layouts above).
 - **Fonts:** every face needs an open-licence font or custom-drawn digits;
-  none of Nothing's fonts can be used. The dot faces use Doto (see
-  [settings.md](settings.md#fonts)); the others need suitable OFL fonts,
-  chosen when each face is built.
+  none of Nothing's fonts can be used. The Dot matrix face does **not**
+  use the same dot font as the Settings titles: its dots are spaced
+  differently horizontally and partly overlap, so Doto doesn't match it.
+  It needs another dot font or custom-drawn dot digits. The other faces
+  need suitable OFL fonts, chosen when each face is built.
 - Faces showing weather use the same weather provider as the widgets (see
   [widgets.md](widgets.md)).
 
