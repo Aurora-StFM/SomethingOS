@@ -87,6 +87,7 @@ config/common.mk          shared config, inherited by every product
 config/version.mk         version string and properties
 products/                 one product makefile per supported device
 rro/                      runtime resource overlays (theming)
+fonts/                    bundled fonts (Doto, OFL) and font registration
 manifests/somethingos.xml local manifest: SomethingOS repos, shared by all devices
 manifests/<codename>.xml  local manifest: one device's device/kernel/vendor trees
 docs/                     wiki source: home, installation, building

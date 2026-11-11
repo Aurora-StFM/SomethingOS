@@ -75,9 +75,15 @@ Font License), set to **weight 900** and **roundness 100** (both at their
 maximum). At those settings it is nearly identical to NDot.
 
 - Doto is a variable font with a weight axis (`wght`, 100–900) and a
-  roundness axis (`ROND`, 0–100). Either ship the variable font and set the
-  axes in the font configuration, or generate a fixed instance at
-  `wght 900, ROND 100` with fontTools to keep it small and simple.
+  roundness axis (`ROND`, 0–100). SomethingOS ships the unmodified variable
+  font (`fonts/Doto-VF.ttf`, installed to `/product/fonts`) and sets the axes
+  in the font configuration, the same way LineageOS ships Google Sans Flex.
+- It's registered as the font family **`somethingos-dot`** in
+  `/product/etc/fonts_customization.xml`, so system apps can use it by name
+  (`android:fontFamily="somethingos-dot"`, or `Typeface.create("somethingos-dot",
+  Typeface.NORMAL)`). Android reads only one such file, so ours replaces
+  LineageOS's and includes its contents; re-copy LineageOS's part on each
+  rebase.
 - Ship the OFL licence text alongside the font file.
 - Used for: large page titles (when the Dot font option is on), the
   lock screen clock, dot-matrix widgets and the community widget kit.

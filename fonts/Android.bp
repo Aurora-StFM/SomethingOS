@@ -1,0 +1,34 @@
+//
+// SPDX-FileCopyrightText: 2026 The SomethingOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+package {
+    default_applicable_licenses: ["vendor_somethingos_fonts_doto_license"],
+}
+
+license {
+    name: "vendor_somethingos_fonts_doto_license",
+    visibility: [":__subpackages__"],
+    license_kinds: ["SPDX-license-identifier-OFL"],
+    license_text: ["OFL.txt"],
+}
+
+// Doto by Óliver Lalan, https://github.com/oliverlalan/Doto (unmodified
+// variable font from Google Fonts). Installed to /product/fonts.
+prebuilt_font {
+    name: "Doto-VF.ttf",
+    src: "Doto-VF.ttf",
+    product_specific: true,
+}
+
+// Registers the font as the "somethingos-dot" font family. Takes the place
+// of LineageOS's fonts_customization.xml, whose contents it includes.
+prebuilt_etc {
+    name: "somethingos_fonts_customization.xml",
+    src: "fonts_customization.xml",
+    filename: "fonts_customization.xml",
+    product_specific: true,
+    overrides: ["fonts_customization.xml"],
+    licenses: ["Android-Apache-2.0"],
+}
