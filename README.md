@@ -117,7 +117,7 @@ in the wiki ([source](docs/Building.md)).
 ## Roadmap
 
 - [x] Repository and product scaffolding
-- [ ] Device trees wired into the manifest; first booting build
+- [x] Device trees wired into the manifest; first booting build (Nothing Phone (1), 2026-11-11)
 - [ ] Monochrome default theme with a red accent
 - [ ] Dot-matrix display font and system font config
 - [ ] Boot animation, wallpapers and UI sounds
