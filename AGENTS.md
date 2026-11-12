@@ -17,6 +17,13 @@ configuration on top of LineageOS. It is not a complete Android tree.
 - Branches track Android versions: `somethingos-24.0` (default, active) and
   `somethingos-22.2` (fallback for the Tab S6 Lite only; don't develop on it).
 - Devices are folders/files on the same branch, never separate branches.
+- A **different base** gets its own branch, like a different Android
+  version. Planned: x86 devices (first target ASUS ProArt PX13) on an
+  Android-x86 base such as Bliss OS, on a branch like
+  `somethingos-bliss-<version>`. Shared work (theming, fonts, overlays) is
+  done on the main branch and **merged** into base branches, not
+  cherry-picked; base-specific changes stay in base-specific files so merges
+  stay clean.
 
 ## Layout
 
