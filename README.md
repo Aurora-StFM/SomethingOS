@@ -92,6 +92,7 @@ manifests/somethingos.xml local manifest: SomethingOS repos, shared by all devic
 manifests/<codename>.xml  local manifest: one device's device/kernel/vendor trees
 docs/                     wiki source: home, installation, building
 docs/design/              design notes and concept sketches
+AGENTS.md                 guidance for AI coding agents (CLAUDE.md points to it)
 ```
 
 Devices live side by side in this layout rather than on separate branches.
