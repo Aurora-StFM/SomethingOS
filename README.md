@@ -67,7 +67,12 @@ LineageOS up to 22.2, but porting it to the Sirocco and to Android 17 is a
 much larger job.
 
 The SomethingOS layer is kept device-agnostic so more LineageOS-supported
-devices can be added later, and x86 builds are a long-term goal.
+devices can be added later.
+
+**x86 (long-term):** if the maintainer gets an **ASUS ProArt PX13** (a 2-in-1
+x86 laptop that folds into a tablet), it will be the first x86 target.
+LineageOS doesn't support x86 PCs, so x86 builds will likely start from an
+Android-x86 base such as Bliss OS rather than LineageOS.
 
 ## Design
 
