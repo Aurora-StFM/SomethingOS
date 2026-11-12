@@ -69,8 +69,8 @@ much larger job.
 The SomethingOS layer is kept device-agnostic so more LineageOS-supported
 devices can be added later.
 
-**x86 (long-term):** if the maintainer gets an **ASUS ProArt PX13** (a 2-in-1
-x86 laptop that folds into a tablet), it will be the first x86 target.
+**x86 (long-term):** The **ASUS ProArt PX13** (a 2-in-1
+x86 laptop that folds into a tablet), will be the first x86 target.
 LineageOS doesn't support x86 PCs, so x86 builds will likely start from an
 Android-x86 base such as Bliss OS rather than LineageOS. Because branches
 follow the base, x86 will live on its own branch (e.g.
