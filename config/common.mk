@@ -39,7 +39,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     somethingos-fonts.der
 
-# Signatures for the fonts the font picker installs at runtime
+# System font picker (Settings > Display > System font) and the signatures
+# for the fonts it installs at runtime
 PRODUCT_PACKAGES += \
+    SomethingFontPicker \
     somethingos-Geist-VF.ttf.sig \
     somethingos-Roboto-Regular.ttf.sig

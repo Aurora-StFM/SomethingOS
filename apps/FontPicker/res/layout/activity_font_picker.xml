@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The SomethingOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- The two preview cards, side by side. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/card_roboto"
+            style="@style/FontCard"
+            android:layout_marginEnd="8dp">
+
+            <TextView
+                style="@style/FontCardPreview"
+                android:fontFamily="sans-serif" />
+
+            <TextView
+                style="@style/FontCardLabel"
+                android:fontFamily="sans-serif"
+                android:text="@string/font_roboto" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/card_geist"
+            style="@style/FontCard"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                style="@style/FontCardPreview"
+                android:fontFamily="somethingos-sans" />
+
+            <TextView
+                style="@style/FontCardLabel"
+                android:fontFamily="somethingos-sans"
+                android:text="@string/font_geist" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="@string/restart_note"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cancel" />
+
+        <Button
+            android:id="@+id/apply"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/apply" />
+    </LinearLayout>
+</LinearLayout>

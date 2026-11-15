@@ -35,6 +35,7 @@ products/somethingos_<codename>.mk   one per device
 manifests/somethingos.xml  local manifest: SomethingOS repos and forks (all devices)
 manifests/<codename>.xml   local manifest: one device's device/kernel/vendor trees
 rro/                       runtime resource overlays
+apps/<App>/                SomethingOS system apps (e.g. apps/FontPicker)
 fonts/<Font>/              one folder per font: files, OFL.txt, Android.bp
 security/fsverity/         public font-signing certificate (private key is NOT in the repo)
 tools/                     helper scripts (e.g. tools/fonts/use_geist.py for the overlays fork)
@@ -81,6 +82,13 @@ So:
     on Lineage's version of the file instead of resolving conflicts by hand.
 - **Overlays:** `runtime_resource_overlay` modules in `rro/`, product
   specific, added to `PRODUCT_PACKAGES` in `config/common.mk`.
+- **System apps:** `android_app` modules in `apps/`, product specific, package
+  `org.somethingos.<app>`. Apps on the product partition must set an
+  `sdk_version` (use `system_current` for system APIs; hidden platform APIs
+  aren't available). Privileged permissions need a
+  `privapp-permissions-<package>.xml` installed to `/product/etc/permissions`.
+  Settings entries are added as Settings tiles (`IA_SETTINGS` intent filter
+  plus a `com.android.settings.category` meta-data), not by forking Settings.
 - **Licence headers:** `SPDX-FileCopyrightText: 2026 The SomethingOS Project`
   and `SPDX-License-Identifier: Apache-2.0` on new files.
 - **English:** British spelling in docs and user-facing strings (colour,
@@ -109,6 +117,10 @@ So:
   `SomethingFrameworkOverlay`. **Never commit the private key**; the
   maintainer signs font files. LineageOS builds aren't debuggable, so
   `cmd font install-debug-cert` doesn't work for testing.
+- The picker (`apps/FontPicker`) switches the Roboto overlay through
+  SystemUI's `theme_customization_overlay_packages` setting, not
+  `cmd overlay`/OverlayManager: SystemUI owns category overlays and would
+  undo a direct change.
 
 ## Hard rules: legal and assets
 

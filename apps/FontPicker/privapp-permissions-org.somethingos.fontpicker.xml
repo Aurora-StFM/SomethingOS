@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The SomethingOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<permissions>
+    <privapp-permissions package="org.somethingos.fontpicker">
+        <!-- Install fonts and redefine system font families -->
+        <permission name="android.permission.UPDATE_FONTS"/>
+        <!-- Switch the Roboto font overlay through SystemUI's theme setting -->
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+        <!-- Restart SystemUI, the launcher and Settings so they use the new font -->
+        <permission name="android.permission.FORCE_STOP_PACKAGES"/>
+    </privapp-permissions>
+</permissions>

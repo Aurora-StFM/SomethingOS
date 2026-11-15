@@ -1,0 +1,31 @@
+//
+// SPDX-FileCopyrightText: 2026 The SomethingOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+// System font picker: Settings > Display > System font (Roboto or Geist).
+// Privileged because changing system fonts needs UPDATE_FONTS. Uses the
+// system SDK (not hidden platform APIs) because apps on the product
+// partition must use a stable SDK.
+android_app {
+    name: "SomethingFontPicker",
+    srcs: ["src/**/*.java"],
+    resource_dirs: ["res"],
+    sdk_version: "system_current",
+    certificate: "platform",
+    privileged: true,
+    product_specific: true,
+    required: ["privapp-permissions-org.somethingos.fontpicker.xml"],
+}
+
+// Allows the privileged permissions the picker asks for.
+prebuilt_etc {
+    name: "privapp-permissions-org.somethingos.fontpicker.xml",
+    src: "privapp-permissions-org.somethingos.fontpicker.xml",
+    sub_dir: "permissions",
+    product_specific: true,
+}

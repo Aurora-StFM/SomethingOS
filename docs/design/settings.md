@@ -165,12 +165,21 @@ Plan:
    installed to `/product/etc/somethingos/fonts/`. Done 2026-11-15. A
    signature covers the exact file, so rerun the script if Roboto changes
    in a LineageOS update.
-3. **The picker** in *Font and display size* (Roboto / Geist, Cancel /
-   Apply) is a system app with the `UPDATE_FONTS` permission. On first use it
-   installs both signed fonts; on **Apply** it redefines all those named
-   families to the chosen font and toggles `FontRobotoOverlay`.
+3. **The picker**, written 2026-11-15, to be tested on a device:
+   `apps/FontPicker` (`SomethingFontPicker`, package
+   `org.somethingos.fontpicker`), a privileged system app with
+   `UPDATE_FONTS`. It shows Roboto / Geist preview cards with Cancel /
+   Apply. On **Apply** it installs the chosen font with its signature,
+   redefines every `google-sans…`/`variable-…` family to it (keeping each
+   family's weights), and switches `FontRobotoOverlay` through SystemUI's
+   theme setting.
+   - **Where it appears:** for now it's a **System font** entry on
+     Settings' *Display* page, added as a Settings tile, so no Settings fork
+     is needed. Moving it into *Font and display size*, as in NothingOS,
+     needs our Settings fork.
 4. **Applying:** running apps keep their old fonts until they restart, so
-   Apply restarts SystemUI and the launcher (or asks for a reboot).
+   Apply restarts the launcher, Settings and SystemUI. Other open apps
+   switch the next time they start.
 
 **NType (serif): Old Standard TT, `somethingos-serif`.** NType is Nothing's
 own serif, used for titles such as the Glyph app's, "App drawer & Search"
