@@ -1,0 +1,20 @@
+//
+// SPDX-FileCopyrightText: 2026 The SomethingOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+// Public certificate for SomethingOS font signing. Font files installed at
+// runtime through Android's updatable fonts (the system font switcher) must
+// carry an fs-verity signature made with the matching private key, which the
+// maintainer keeps outside this repository. Listed as trusted in
+// config_fontManagerServiceCerts by SomethingFrameworkOverlay.
+prebuilt_etc {
+    name: "somethingos-fonts.der",
+    src: "somethingos-fonts.der",
+    sub_dir: "security/fsverity",
+    product_specific: true,
+}

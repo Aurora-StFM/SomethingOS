@@ -36,6 +36,7 @@ manifests/somethingos.xml  local manifest: SomethingOS repos and forks (all devi
 manifests/<codename>.xml   local manifest: one device's device/kernel/vendor trees
 rro/                       runtime resource overlays
 fonts/<Font>/              one folder per font: files, OFL.txt, Android.bp
+security/fsverity/         public font-signing certificate (private key is NOT in the repo)
 docs/                      wiki source (Home, Installation, Building, design/)
 .github/                   wiki sync workflow and script
 ```
@@ -96,6 +97,14 @@ So:
   (category `android.theme.customization.font`) switches to Roboto.
 - The lock screen's dot-matrix clock face uses a **different** dot style from
   Doto; don't reuse `somethingos-dot` for it.
+- **Font switching** (Roboto/Geist everywhere) uses Android's updatable
+  system fonts to redefine named families at runtime. Fonts installed that
+  way need an fs-verity signature from the SomethingOS font-signing key.
+  Only the public certificate (`security/fsverity/somethingos-fonts.der`) is
+  in the repo, trusted via `config_fontManagerServiceCerts` in
+  `SomethingFrameworkOverlay`. **Never commit the private key**; the
+  maintainer signs font files. LineageOS builds aren't debuggable, so
+  `cmd font install-debug-cert` doesn't work for testing.
 
 ## Hard rules: legal and assets
 

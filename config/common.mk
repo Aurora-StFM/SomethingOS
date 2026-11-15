@@ -34,3 +34,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     FontGeistOverlay \
     FontRobotoOverlay
+
+# Certificate trusted for runtime-installed fonts (system font switcher)
+PRODUCT_PACKAGES += \
+    somethingos-fonts.der

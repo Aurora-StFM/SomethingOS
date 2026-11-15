@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The SomethingOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Certificates trusted for fonts installed through updatable fonts
+         (the system font switcher). Empty in AOSP. -->
+    <string-array name="config_fontManagerServiceCerts" translatable="false">
+        <item>/product/etc/security/fsverity/somethingos-fonts.der</item>
+    </string-array>
+</resources>
