@@ -137,24 +137,27 @@ pieces:
 - Requires fs-verity support on the device (standard on devices launched
   with Android 11 or later).
 
+**Status: proven on the Nothing Phone (1)** (2026-11-15). Installing a
+signed Geist through `cmd font update` and redefining the 40 `google-sans…`
+and `variable-…` families with `cmd font update-family` switched the whole
+UI to Geist at runtime. Our certificate is trusted via
+`config_fontManagerServiceCerts` in `SomethingFrameworkOverlay`, with the
+public certificate at `/product/etc/security/fsverity/somethingos-fonts.der`.
+
 Plan:
 
 1. **Default (build time):** our overlays fork points the `google-sans…` and
-   `variable-…` families at Geist, so the whole UI is Geist from first boot.
-2. **Switching (runtime):** the picker in *Font and display size* installs
-   signed Geist and Roboto files once, then on **Apply** redefines all those
-   named families to the chosen font and toggles `FontRobotoOverlay` for the
-   overlay-based families.
-3. **Applying:** running apps keep their old fonts until they restart, so
+   `variable-…` families at Geist, so the whole UI is Geist from first boot,
+   before anything is installed at runtime.
+2. **Signed font files:** the maintainer signs Geist and Roboto with the
+   SomethingOS font-signing key (`fsverity sign`); the `.sig` files (not the
+   key) are committed and shipped next to the fonts.
+3. **The picker** in *Font and display size* (Roboto / Geist, Cancel /
+   Apply) is a system app with the `UPDATE_FONTS` permission. On first use it
+   installs both signed fonts; on **Apply** it redefines all those named
+   families to the chosen font and toggles `FontRobotoOverlay`.
+4. **Applying:** running apps keep their old fonts until they restart, so
    Apply restarts SystemUI and the launcher (or asks for a reboot).
-
-Other Android versions handle this with their own framework changes
-(e.g. Samsung's FlipFont); most custom ROMs only use font overlays and have
-the same partial-coverage problem.
-
-Can be prototyped before writing the picker: on `userdebug` builds,
-`adb shell cmd font` offers `install-debug-cert`, `update` and
-`update-family`.
 
 **NType (serif): Old Standard TT, `somethingos-serif`.** NType is Nothing's
 own serif, used for titles such as the Glyph app's, "App drawer & Search"

@@ -160,6 +160,12 @@ So:
   (exit 137) without a large swapfile.
 - **ccache needs `CCACHE_DIR`.** Compile steps run sandboxed as `nobody`;
   without it every compile fails with "ccache: error: Not a directory".
+- **"Font validation failed. Fs-verity is not enabled"** from `cmd font
+  update` usually means the font's **signature isn't trusted**, not that
+  fs-verity is missing (`UpdatableFontDir.validateFontFile()` throws it for
+  any signature failure). Check the certificate is in
+  `config_fontManagerServiceCerts` and the file was signed with the matching
+  key.
 - **`repo sync` from android.googlesource.com is rate-limited** for anonymous
   users (HTTP 429). Use `-j4` and retry later, or authenticate with
   `.gitcookies`.
