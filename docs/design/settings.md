@@ -110,9 +110,8 @@ Geist itself rather than a look-alike.
   replaces.
 - **Roboto** is `FontRobotoOverlay`, a switchable font overlay (category
   `android.theme.customization.font`) that sets them back to `sans-serif`.
-  The picker enables it for Roboto and disables it for Geist. Until the
-  picker exists it can be tested with
-  `adb shell cmd overlay enable org.somethingos.overlay.font.roboto`.
+  The picker enables it for Roboto and disables it for Geist. On its own it
+  only switches part of the UI back (see below); the rest needs the picker.
 - **Why overlays alone aren't enough.** LineageOS's font list also defines
   the `google-sans…` families and about 30 `variable-…` families (Material 3
   text styles), all pointing at Google Sans Flex. Settings, SystemUI and the
@@ -146,9 +145,14 @@ public certificate at `/product/etc/security/fsverity/somethingos-fonts.der`.
 
 Plan:
 
-1. **Default (build time):** our overlays fork points the `google-sans…` and
-   `variable-…` families at Geist, so the whole UI is Geist from first boot,
-   before anything is installed at runtime.
+1. **Default (build time), done (2026-11-15), to be checked on a device:**
+   our overlays fork points the `google-sans…` and `variable-…` families at
+   Geist, so the whole UI is Geist from first boot, before anything is
+   installed at runtime. Android rejects duplicate family names in that
+   file, so the families are rewritten in place by
+   `tools/fonts/use_geist.py` (rerun after each rebase). Geist has no
+   italic or optical-size axes: italic text uses Android's slanted Geist,
+   and Google Sans Flex's other axes are dropped.
 2. **Signed font files:** the maintainer signs Geist and Roboto with the
    SomethingOS font-signing key (`fsverity sign`); the `.sig` files (not the
    key) are committed and shipped next to the fonts.
