@@ -153,9 +153,17 @@ Plan:
    `tools/fonts/use_geist.py` (rerun after each rebase). Geist has no
    italic or optical-size axes: italic text uses Android's slanted Geist,
    and Google Sans Flex's other axes are dropped.
-2. **Signed font files:** the maintainer signs Geist and Roboto with the
-   SomethingOS font-signing key (`fsverity sign`); the `.sig` files (not the
-   key) are committed and shipped next to the fonts.
+2. **Signed font files:** runtime families can only use fonts installed
+   through the updater, not fonts already in the system image, so the
+   picker installs both Geist and Roboto, even though Geist is the default.
+   It installs the copies already on the device
+   (`/product/fonts/Geist-VF.ttf`, `/system/fonts/Roboto-Regular.ttf`), so
+   only their signatures are shipped. The maintainer creates them with
+   `tools/fonts/sign_fonts.sh`, which pulls the fonts from a device, signs
+   them with the SomethingOS font-signing key and test-installs them. The
+   `.sig` files (not the key) are committed to `fonts/signatures/`. A
+   signature covers the exact file, so rerun the script if Roboto changes
+   in a LineageOS update.
 3. **The picker** in *Font and display size* (Roboto / Geist, Cancel /
    Apply) is a system app with the `UPDATE_FONTS` permission. On first use it
    installs both signed fonts; on **Apply** it redefines all those named

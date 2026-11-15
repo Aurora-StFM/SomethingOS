@@ -1,0 +1,5 @@
+# Private keys must never be committed (see AGENTS.md).
+*.key
+*.pk8
+*.pem
+*.p12
