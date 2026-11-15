@@ -161,7 +161,8 @@ Plan:
    only their signatures are shipped. The maintainer creates them with
    `tools/fonts/sign_fonts.sh`, which pulls the fonts from a device, signs
    them with the SomethingOS font-signing key and test-installs them. The
-   `.sig` files (not the key) are committed to `fonts/signatures/`. A
+   `.sig` files (not the key) are committed to `fonts/signatures/` and
+   installed to `/product/etc/somethingos/fonts/`. Done 2026-11-15. A
    signature covers the exact file, so rerun the script if Roboto changes
    in a LineageOS update.
 3. **The picker** in *Font and display size* (Roboto / Geist, Cancel /

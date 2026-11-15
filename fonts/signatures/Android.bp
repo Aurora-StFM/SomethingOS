@@ -1,0 +1,31 @@
+//
+// SPDX-FileCopyrightText: 2026 The SomethingOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+// fs-verity signatures for the fonts the system font picker installs at
+// runtime. Each covers the exact copy of the font on the device, made with
+// the SomethingOS font-signing key by tools/fonts/sign_fonts.sh. Rerun that
+// script if either font changes.
+//
+// Installed to /product/etc/somethingos/fonts/.
+
+prebuilt_etc {
+    name: "somethingos-Geist-VF.ttf.sig",
+    src: "Geist-VF.ttf.sig",
+    filename: "Geist-VF.ttf.sig",
+    sub_dir: "somethingos/fonts",
+    product_specific: true,
+}
+
+prebuilt_etc {
+    name: "somethingos-Roboto-Regular.ttf.sig",
+    src: "Roboto-Regular.ttf.sig",
+    filename: "Roboto-Regular.ttf.sig",
+    sub_dir: "somethingos/fonts",
+    product_specific: true,
+}

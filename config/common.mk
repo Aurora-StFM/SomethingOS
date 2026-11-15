@@ -38,3 +38,8 @@ PRODUCT_PACKAGES += \
 # Certificate trusted for runtime-installed fonts (system font switcher)
 PRODUCT_PACKAGES += \
     somethingos-fonts.der
+
+# Signatures for the fonts the font picker installs at runtime
+PRODUCT_PACKAGES += \
+    somethingos-Geist-VF.ttf.sig \
+    somethingos-Roboto-Regular.ttf.sig
