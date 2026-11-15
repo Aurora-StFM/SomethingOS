@@ -113,10 +113,48 @@ Geist itself rather than a look-alike.
   The picker enables it for Roboto and disables it for Geist. Until the
   picker exists it can be tested with
   `adb shell cmd overlay enable org.somethingos.overlay.font.roboto`.
-- Known gap: Android 16+ also uses separate "variable-display/headline/…"
-  font families built on Google Sans Flex for some Material 3 text. The
-  overlays don't change those; parts of the UI may stay in Google Sans
-  Flex until they're remapped.
+- **Why overlays alone aren't enough.** LineageOS's font list also defines
+  the `google-sans…` families and about 30 `variable-…` families (Material 3
+  text styles), all pointing at Google Sans Flex. Settings, SystemUI and the
+  launcher often ask for these by name, so the overlays above only change
+  part of the UI. The font list itself is fixed at build time.
+
+#### How the font switcher works
+
+Android's own **updatable system fonts** (the mechanism Google uses to
+update fonts through Play) can redefine *named* font families at runtime:
+families defined later override earlier ones with the same name
+(`UpdatableFontDir.getSystemFontConfig()` in `frameworks/base`). The
+pieces:
+
+- A privileged app with the `UPDATE_FONTS` permission installs font files
+  into the updatable font folder (`FontManager` update), then sends new
+  definitions for named families (`updateFontFamily`).
+- Installed font files must carry an fs-verity signature from a certificate
+  listed in the framework's `config_fontManagerServiceCerts`. As the ROM
+  maker we can add our own certificate. Same-or-newer font versions are
+  accepted, so unmodified copies of Geist and Roboto work.
+- Requires fs-verity support on the device (standard on devices launched
+  with Android 11 or later).
+
+Plan:
+
+1. **Default (build time):** our overlays fork points the `google-sans…` and
+   `variable-…` families at Geist, so the whole UI is Geist from first boot.
+2. **Switching (runtime):** the picker in *Font and display size* installs
+   signed Geist and Roboto files once, then on **Apply** redefines all those
+   named families to the chosen font and toggles `FontRobotoOverlay` for the
+   overlay-based families.
+3. **Applying:** running apps keep their old fonts until they restart, so
+   Apply restarts SystemUI and the launcher (or asks for a reboot).
+
+Other Android versions handle this with their own framework changes
+(e.g. Samsung's FlipFont); most custom ROMs only use font overlays and have
+the same partial-coverage problem.
+
+Can be prototyped before writing the picker: on `userdebug` builds,
+`adb shell cmd font` offers `install-debug-cert`, `update` and
+`update-family`.
 
 **NType (serif): Old Standard TT, `somethingos-serif`.** NType is Nothing's
 own serif, used for titles such as the Glyph app's, "App drawer & Search"
