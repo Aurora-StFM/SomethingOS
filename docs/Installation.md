@@ -19,7 +19,7 @@ each device's LineageOS installation guide:
 2. Unlock the bootloader.
 3. Flash a recovery (the LineageOS recovery for that device).
 4. Factory reset, then install the SomethingOS zip from the recovery.
-5. Optionally install [Google apps](https://wiki.lineageos.org/gapps/)(choose lineageOS 24).
+5. Optionally install [Google apps](https://wiki.lineageos.org/gapps/) (choose lineageOS 24).
 
 ## Installing your own build
 
