@@ -19,7 +19,7 @@ each device's LineageOS installation guide:
 2. Unlock the bootloader.
 3. Flash a recovery (the LineageOS recovery for that device).
 4. Factory reset, then install the SomethingOS zip from the recovery.
-5. Optionally install Google apps.
+5. Optionally install [Google apps](https://github.com/MindTheGapps/16.0.0-arm64/releases).
 
 ## Installing your own build
 
