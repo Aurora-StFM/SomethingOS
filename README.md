@@ -40,7 +40,7 @@ kernel and vendor sources are the same ones official LineageOS builds use.
 For the Tab S6 Lite, the device's maintainers released an unofficial
 [LineageOS 24.0 build](https://github.com/danielml3/releases/releases) on
 2026-10-24, built from the same device sources SomethingOS uses
-([XDA thread](https://xdaforums.com/t/rom-unofficial-2022-model-lineageos-22-2-for-galaxy-tab-s6-lite-2022-qualcomm.4699445/)).
+([XDA thread](https://xdaforums.com/t/rom-unofficial-2022-model-lineageos-24-for-galaxy-tab-s6-lite-2022-qualcomm.4806288/)).
 
 The `somethingos-22.2` branch is kept as a fallback (Tab S6 Lite only) in
 case a 24.0 build has problems on the tablet. It builds on the LineageOS

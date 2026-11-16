@@ -62,4 +62,15 @@ install guide:
 
 - [Nothing Phone (1)](https://wiki.lineageos.org/devices/Spacewar/install/)
 - Galaxy Tab S6 Lite 2022: the instructions in the
-  [unofficial LineageOS thread on XDA](https://xdaforums.com/t/rom-unofficial-2022-model-lineageos-22-2-for-galaxy-tab-s6-lite-2022-qualcomm.4699445/)
+  [unofficial LineageOS 24 thread on XDA](https://xdaforums.com/t/rom-unofficial-2022-model-lineageos-24-for-galaxy-tab-s6-lite-2022-qualcomm.4806288/).
+  In short: unlock the bootloader (trips Knox), flash their recovery `.tar`
+  (it contains the recovery and a patched `vbmeta`) with Odin in the `AP`
+  slot, then boot straight into recovery and sideload the SomethingOS zip
+  instead of theirs. Format data after installing, as the thread says.
+  - Odin is Windows-only. On Linux, the recovery and `vbmeta` images inside
+    the `.tar` can be flashed with Heimdall
+    (`heimdall flash --RECOVERY recovery.img --VBMETA vbmeta.img`), but
+    Heimdall doesn't work with every Samsung bootloader; if it fails, use
+    Odin on a Windows PC or VM.
+  - If OneUI boots before the recovery has been used once, it replaces the
+    recovery and you have to flash it again.
