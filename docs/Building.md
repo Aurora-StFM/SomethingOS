@@ -197,6 +197,8 @@ building, then run the build commands again; finished steps are skipped.
   likely to build and boot first.
 - **Galaxy Tab S6 Lite 2022** (`gta4xlveu`): the device, kernel and vendor
   trees come from the [gta4xlve-dev](https://github.com/gta4xlve-dev)
-  project, the same sources as the unofficial LineageOS build. Its 24.0
-  sources are unreleased work in progress. One build covers both the Wi-Fi
-  (SM-P613) and LTE (SM-P619) models.
+  project, the same sources as the unofficial LineageOS build, whose 24.0
+  version was [released](https://github.com/danielml3/releases/releases)
+  on 2026-10-24. Its vendor blobs repo has no `lineage-24.0` branch, so the
+  manifest uses `lineage-23.2`; the 24.0 device tree lists the same blobs.
+  One build covers both the Wi-Fi (SM-P613) and LTE (SM-P619) models.

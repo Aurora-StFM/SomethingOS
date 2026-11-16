@@ -37,14 +37,14 @@ SomethingOS targets **Android 17** via LineageOS 24.0.
 The Nothing Phone (1) is officially supported by LineageOS, so its device,
 kernel and vendor sources are the same ones official LineageOS builds use.
 
-For the Tab S6 Lite, the device's
-[LineageOS release on XDA](https://xdaforums.com/t/rom-unofficial-2022-model-lineageos-22-2-for-galaxy-tab-s6-lite-2022-qualcomm.4699445/)
-is still 22.2 (Android 15); its maintainers' 24.0 sources are in active
-development and not yet released.
+For the Tab S6 Lite, the device's maintainers released an unofficial
+[LineageOS 24.0 build](https://github.com/danielml3/releases/releases) on
+2026-10-24, built from the same device sources SomethingOS uses
+([XDA thread](https://xdaforums.com/t/rom-unofficial-2022-model-lineageos-22-2-for-galaxy-tab-s6-lite-2022-qualcomm.4699445/)).
 
-If the Tab S6 Lite's Android 17 sources don't boot yet, the `somethingos-22.2`
-branch is kept as a fallback (Tab S6 Lite only). It builds on the released
-LineageOS 22.2 (Android 15) device sources instead.
+The `somethingos-22.2` branch is kept as a fallback (Tab S6 Lite only) in
+case a 24.0 build has problems on the tablet. It builds on the LineageOS
+22.2 (Android 15) device sources instead.
 
 Other Tab S6 Lite models are **not** supported. That includes the original
 2020 Exynos model (SM-P610/P615) and the 2024 model, which use different hardware.
