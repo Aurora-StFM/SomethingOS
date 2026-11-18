@@ -21,6 +21,23 @@ layout itself is restyling.
   24.0 has it, in which case this is mostly spacing, colour and icons.
 - **Profile picture (top right):** see below.
 
+### Restyle
+
+Done in our Settings fork, mostly by overriding SettingsLib resources in
+`res-somethingos/` (a resource there with the same name replaces
+SettingsLib's), so `frameworks/base` isn't forked for it. Steps:
+
+1. **Title area** (done, confirmed on the Phone (1)): expanded by default,
+   plain back arrow, 34dp title 20dp from the edges.
+2. **Colours:** NothingOS's monochrome palette instead of Material You.
+   Dark (written, to be tested): black page, `#191919` cards, `#FBFBFB`
+   titles, `#999999` summaries and section headers, switches with a
+   `#E0E0E0` track and dark thumb when on. Light: needs references.
+3. **Lists:** card corners and spacing; plain monochrome icons instead of
+   coloured circles on the main page.
+4. **Main page:** "SETTINGS" title, profile picture, search bar.
+5. **Controls:** switches without the tick/cross icons, sliders.
+
 ## Special features
 
 A **Special features** entry in the main Settings list, in the last group
@@ -29,11 +46,8 @@ between *System* and *About*, as in NothingOS. Built in our Settings fork
 pages and look like the rest. Status: works on the Phone (1) (2026-11-18);
 the title fonts switch as intended.
 
-Title layout still differs from NothingOS (to do with the Settings
-restyle): NothingOS puts the back arrow on its own row with a large title
-under it, wrapping onto two lines, while LineageOS's title sits beside a
-round back button. The dot-matrix title is also more widely spaced than
-NothingOS's.
+Title layout matches NothingOS (2026-11-18): plain back arrow on its own
+row, large title under it that shrinks into the top bar on scroll.
 
 Contents, in NothingOS's order, added as each is built rather than shown
 empty:
