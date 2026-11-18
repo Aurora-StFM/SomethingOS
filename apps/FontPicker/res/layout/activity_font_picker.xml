@@ -15,6 +15,7 @@
 
     <!-- The two options side by side. Selecting an option selects its card and label. -->
     <LinearLayout
+        android:id="@+id/options"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -54,7 +55,19 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Cancel / Apply, at the bottom right. -->
+    <!-- Shown instead of the options after Apply. -->
+    <TextView
+        android:id="@+id/restart_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"
+        android:text="@string/restart_message"
+        android:textColor="@color/text_primary"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <!-- Cancel / Apply (Later / Restart after Apply), at the bottom right. -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

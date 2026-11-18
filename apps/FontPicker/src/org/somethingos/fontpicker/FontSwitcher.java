@@ -16,6 +16,7 @@ import android.graphics.fonts.FontManager;
 import android.graphics.fonts.FontStyle;
 import android.graphics.fonts.FontVariationAxis;
 import android.os.ParcelFileDescriptor;
+import android.os.PowerManager;
 import android.provider.Settings;
 import android.text.FontConfig;
 import android.util.Log;
@@ -210,11 +211,15 @@ final class FontSwitcher {
     }
 
     /**
-     * Restarts the apps the user sees most so they load the new font: the launcher, Settings
-     * and SystemUI (which Android restarts by itself). Settings is reopened on the Font and
-     * display size page, where the picker was opened. Other apps switch when they next start.
+     * Restarts the launcher and Settings so they load the new font, reopening Settings on the
+     * Font and display size page, where the picker was opened. Other apps switch when they
+     * next start.
+     *
+     * <p>SystemUI can't be restarted this way: it's a persistent process, and
+     * {@code forceStopPackage} leaves persistent processes running. It switches at the next
+     * reboot, which the picker offers ({@link #reboot}).
      */
-    void restartUi() {
+    void restartApps() {
         ActivityManager am = mContext.getSystemService(ActivityManager.class);
         Intent home = new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME);
         ResolveInfo launcher = mContext.getPackageManager().resolveActivity(home, 0);
@@ -229,6 +234,10 @@ final class FontSwitcher {
         } catch (ActivityNotFoundException e) {
             Log.w(TAG, "Couldn't reopen Settings", e);
         }
-        am.forceStopPackage("com.android.systemui");
+    }
+
+    /** Restarts the device, so everything (SystemUI included) uses the new font. */
+    void reboot() {
+        mContext.getSystemService(PowerManager.class).reboot(null);
     }
 }

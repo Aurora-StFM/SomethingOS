@@ -10,5 +10,8 @@
     <string name="font_geist" translatable="false">Geist</string>
     <string name="cancel">Cancel</string>
     <string name="apply">Apply</string>
+    <string name="restart_message">Restart to finish changing the font. Until then, the status bar, Quick Settings and lock screen keep the old one.</string>
+    <string name="later">Later</string>
+    <string name="restart">Restart</string>
     <string name="error">Couldn\'t change the font (error %1$d).</string>
 </resources>

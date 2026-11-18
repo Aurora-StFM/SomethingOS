@@ -187,10 +187,15 @@ Plan:
      at the bottom right. Dark grey in dark theme, light grey in light
      theme. Width: the screen minus 24dp each side, at most 440dp on
      tablets.
-4. **Applying:** running apps keep their old fonts until they restart, so
-   Apply restarts the launcher, Settings and SystemUI, and reopens *Font and
-   display size* so the user lands where they were. Other open apps switch
-   the next time they start.
+4. **Applying:** running apps keep their old fonts until they restart.
+   After Apply, the dialog asks to **restart**: SystemUI (status bar, Quick
+   Settings, lock screen) is a persistent process, and Android won't let
+   another app restart it (`forceStopPackage` skips persistent processes),
+   so it only switches after a reboot. **Later** restarts Settings and the
+   launcher and reopens *Font and display size*; everything else switches
+   at the next reboot. Once we fork `frameworks_base` (planned for the lock
+   screen), SystemUI can restart itself when the font changes, as in
+   NothingOS, and the prompt can go.
 
 **NType (serif): Old Standard TT, `somethingos-serif`.** NType is Nothing's
 own serif, used for titles such as the Glyph app's, "App drawer & Search"

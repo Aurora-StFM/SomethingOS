@@ -15,6 +15,8 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.window.OnBackInvokedDispatcher;
 import android.widget.Toast;
 
 import org.somethingos.fontpicker.FontSwitcher.SystemFont;
@@ -26,7 +28,9 @@ import java.util.concurrent.Executors;
  * The Default font dialog: a Roboto and a Geist option, with Cancel and Apply, shown over
  * Settings > Display > Font and display size.
  *
- * <p>Tapping an option only selects it; Apply installs the font and restarts the UI.
+ * <p>Tapping an option only selects it. Apply installs the font, then the dialog offers a
+ * restart: SystemUI (status bar, Quick Settings, lock screen) only switches after one, as no
+ * other app may restart it. Later restarts just Settings and the launcher.
  */
 public class FontPickerActivity extends Activity {
 
@@ -45,7 +49,13 @@ public class FontPickerActivity extends Activity {
 
     private View mRobotoOption;
     private View mGeistOption;
-    private View mApplyButton;
+    private View mOptions;
+    private View mRestartMessage;
+    private TextView mCancelButton;
+    private TextView mApplyButton;
+
+    /** True once the font is applied and the dialog is asking whether to restart. */
+    private boolean mAskingToRestart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +66,27 @@ public class FontPickerActivity extends Activity {
         mSwitcher = new FontSwitcher(this);
         mRobotoOption = findViewById(R.id.option_roboto);
         mGeistOption = findViewById(R.id.option_geist);
+        mOptions = findViewById(R.id.options);
+        mRestartMessage = findViewById(R.id.restart_message);
+        mCancelButton = findViewById(R.id.cancel);
         mApplyButton = findViewById(R.id.apply);
 
         mRobotoOption.setOnClickListener(v -> select(SystemFont.ROBOTO));
         mGeistOption.setOnClickListener(v -> select(SystemFont.GEIST));
-        findViewById(R.id.cancel).setOnClickListener(v -> finish());
-        mApplyButton.setOnClickListener(v -> apply());
+        mCancelButton.setOnClickListener(v -> {
+            if (mAskingToRestart) {
+                restartAppsAndClose();
+            } else {
+                finish();
+            }
+        });
+        mApplyButton.setOnClickListener(v -> {
+            if (mAskingToRestart) {
+                mSwitcher.reboot();
+            } else {
+                apply();
+            }
+        });
 
         // Show the font in use; asking the font service is quick but not instant.
         setControlsEnabled(false);
@@ -112,13 +137,7 @@ public class FontPickerActivity extends Activity {
                 result = FontManager.RESULT_ERROR_FAILED_UPDATE_CONFIG;
             }
             if (result == FontManager.RESULT_SUCCESS) {
-                // Restarts Settings (reopening this page) and SystemUI with the new font.
-                mSwitcher.restartUi();
-                // This dialog still uses the old font, so close it for good.
-                mMainHandler.post(() -> {
-                    finish();
-                    Process.killProcess(Process.myPid());
-                });
+                mMainHandler.post(this::askToRestart);
             } else {
                 final int error = result;
                 mMainHandler.post(() -> {
@@ -131,7 +150,33 @@ public class FontPickerActivity extends Activity {
         });
     }
 
+    /** Swaps the options for the restart question, with Later / Restart. */
+    private void askToRestart() {
+        mAskingToRestart = true;
+        // Tapping outside would skip both choices, leaving Settings in the old font.
+        setFinishOnTouchOutside(false);
+        mOptions.setVisibility(View.GONE);
+        mRestartMessage.setVisibility(View.VISIBLE);
+        mCancelButton.setText(R.string.later);
+        mApplyButton.setText(R.string.restart);
+        mCancelButton.setEnabled(true);
+        setApplyEnabled(true);
+        // Back now means "later", not "forget it".
+        getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
+                OnBackInvokedDispatcher.PRIORITY_DEFAULT, this::restartAppsAndClose);
+    }
+
+
+    /** Restarts Settings and the launcher in the new font and closes this dialog for good. */
+    private void restartAppsAndClose() {
+        mSwitcher.restartApps();
+        // This dialog still uses the old font, so end its process too.
+        finish();
+        Process.killProcess(Process.myPid());
+    }
+
     private void setControlsEnabled(boolean enabled) {
+        mCancelButton.setEnabled(enabled);
         mRobotoOption.setEnabled(enabled);
         mGeistOption.setEnabled(enabled);
         setApplyEnabled(enabled);

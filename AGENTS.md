@@ -193,6 +193,11 @@ So:
   any signature failure). Check the certificate is in
   `config_fontManagerServiceCerts` and the file was signed with the matching
   key.
+- **Other apps can't restart SystemUI.** `ActivityManager.forceStopPackage`
+  skips persistent processes (`evenPersistent` is false), so force-stopping
+  `com.android.systemui` silently does nothing. Changes SystemUI only loads at
+  start-up (like fonts) need a reboot, or a SystemUI change that restarts
+  itself.
 - **`repo sync` from android.googlesource.com is rate-limited** for anonymous
   users (HTTP 429). Use `-j4` and retry later, or authenticate with
   `.gitcookies`.

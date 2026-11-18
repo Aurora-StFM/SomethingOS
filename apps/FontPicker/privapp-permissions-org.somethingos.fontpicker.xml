@@ -9,7 +9,10 @@
         <permission name="android.permission.UPDATE_FONTS"/>
         <!-- Switch the Roboto font overlay through SystemUI's theme setting -->
         <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
-        <!-- Restart SystemUI, the launcher and Settings so they use the new font -->
+        <!-- Restart the launcher and Settings so they use the new font -->
         <permission name="android.permission.FORCE_STOP_PACKAGES"/>
+        <!-- Offer a restart so SystemUI picks up the new font; Android won't
+             let other apps restart SystemUI, as it's a persistent process -->
+        <permission name="android.permission.REBOOT"/>
     </privapp-permissions>
 </permissions>
