@@ -6,6 +6,7 @@
 package org.somethingos.fontpicker;
 
 import android.app.ActivityManager;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
@@ -59,6 +60,10 @@ final class FontSwitcher {
             Settings.Secure.THEME_CUSTOMIZATION_OVERLAY_PACKAGES;
     private static final String FONT_CATEGORY = "android.theme.customization.font";
     private static final String TIMESTAMP_FIELD = "_applied_timestamp";
+
+    private static final String SETTINGS_PACKAGE = "com.android.settings";
+    /** Opens Settings > Display > Font and display size. */
+    private static final String TEXT_READING_SETTINGS = "android.settings.TEXT_READING_SETTINGS";
 
     /** Returned by {@link #apply} when the font list has none of the families to redefine. */
     static final int RESULT_NO_FAMILIES = -20001;
@@ -206,7 +211,8 @@ final class FontSwitcher {
 
     /**
      * Restarts the apps the user sees most so they load the new font: the launcher, Settings
-     * and SystemUI (which Android restarts by itself). Other apps switch when they next start.
+     * and SystemUI (which Android restarts by itself). Settings is reopened on the Font and
+     * display size page, where the picker was opened. Other apps switch when they next start.
      */
     void restartUi() {
         ActivityManager am = mContext.getSystemService(ActivityManager.class);
@@ -215,7 +221,14 @@ final class FontSwitcher {
         if (launcher != null && launcher.activityInfo != null) {
             am.forceStopPackage(launcher.activityInfo.packageName);
         }
-        am.forceStopPackage("com.android.settings");
+        am.forceStopPackage(SETTINGS_PACKAGE);
+        try {
+            mContext.startActivity(new Intent(TEXT_READING_SETTINGS)
+                    .setPackage(SETTINGS_PACKAGE)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        } catch (ActivityNotFoundException e) {
+            Log.w(TAG, "Couldn't reopen Settings", e);
+        }
         am.forceStopPackage("com.android.systemui");
     }
 }

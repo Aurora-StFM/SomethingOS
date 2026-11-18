@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The SomethingOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- Filled pill, with a touch ripple. Faded in code while disabled. -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?android:attr/colorControlHighlight">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="100dp" />
+            <solid android:color="@color/apply_background" />
+        </shape>
+    </item>
+</ripple>

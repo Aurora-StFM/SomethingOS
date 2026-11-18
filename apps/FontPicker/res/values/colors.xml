@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The SomethingOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- Light theme. Dark theme colours are in values-night. -->
+<resources>
+    <color name="dialog_background">#F2F2F2</color>
+    <color name="card_background">#E3E3E3</color>
+    <color name="card_selected_outline">#1B1B1B</color>
+    <color name="text_primary">#000000</color>
+    <color name="label_selected_background">#1B1B1B</color>
+    <color name="label_selected_text">#FFFFFF</color>
+    <color name="cancel_outline">#8A8A8A</color>
+    <color name="cancel_text">#000000</color>
+    <color name="apply_background">#000000</color>
+    <color name="apply_text">#FFFFFF</color>
+</resources>

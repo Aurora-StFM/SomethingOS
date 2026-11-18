@@ -4,32 +4,62 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
-    <style name="FontCard">
+    <!-- A floating dialog over Settings; the rounded background is drawn by the layout. -->
+    <style name="Theme.FontPicker" parent="@android:style/Theme.DeviceDefault.DayNight">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
+    <!-- One option: preview card with the font's name under it. -->
+    <style name="FontOption">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:gravity">center</item>
-        <item name="android:paddingTop">32dp</item>
-        <item name="android:paddingBottom">20dp</item>
-        <item name="android:background">@drawable/font_card</item>
+        <item name="android:gravity">center_horizontal</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
     </style>
 
     <style name="FontCardPreview">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">96dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/font_card</item>
         <item name="android:text">@string/preview</item>
-        <item name="android:textSize">40sp</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:maxLines">1</item>
     </style>
 
     <style name="FontCardLabel">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">16dp</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:layout_height">28dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minWidth">68dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:background">@drawable/font_label</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/font_label_text</item>
+    </style>
+
+    <style name="PillButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:minWidth">76dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
     </style>
 </resources>

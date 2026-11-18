@@ -165,21 +165,32 @@ Plan:
    installed to `/product/etc/somethingos/fonts/`. Done 2026-11-15. A
    signature covers the exact file, so rerun the script if Roboto changes
    in a LineageOS update.
-3. **The picker**, written 2026-11-15, to be tested on a device:
-   `apps/FontPicker` (`SomethingFontPicker`, package
+3. **The picker**: `apps/FontPicker` (`SomethingFontPicker`, package
    `org.somethingos.fontpicker`), a privileged system app with
-   `UPDATE_FONTS`. It shows Roboto / Geist preview cards with Cancel /
-   Apply. On **Apply** it installs the chosen font with its signature,
-   redefines every `google-sans…`/`variable-…` family to it (keeping each
-   family's weights), and switches `FontRobotoOverlay` through SystemUI's
-   theme setting.
-   - **Where it appears:** for now it's a **System font** entry on
-     Settings' *Display* page, added as a Settings tile, so no Settings fork
-     is needed. Moving it into *Font and display size*, as in NothingOS,
-     needs our Settings fork.
+   `UPDATE_FONTS`. On **Apply** it installs the chosen font with its
+   signature, redefines every `google-sans…`/`variable-…` family to it
+   (keeping each family's weights), and switches `FontRobotoOverlay`
+   through SystemUI's theme setting. Runtime switching is proven on the Phone (1);
+   the layout below is to be checked on a device.
+   - **Where it appears:** a **Default font** row, with the current font as
+     its summary, at the top of *Size options* in Settings > Display > *Font
+     and display size*, as in NothingOS. That page is built in code
+     (`TextReadingScreen.kt`) and doesn't accept injected Settings tiles, so
+     the row comes from our fork of `packages/apps/Settings`
+     (`SystemFontPreference.kt`, 3 files, marked "SomethingOS"). The row
+     opens the picker; it isn't shown in the setup wizard or if the picker
+     isn't installed.
+   - **Look:** a floating rounded dialog over the page (not a full page):
+     two "Aa 123" preview cards side by side, each in its own font, with
+     the font's name under it. The selected card is outlined and its name
+     sits in a filled pill. Cancel (outlined pill) and Apply (filled pill)
+     at the bottom right. Dark grey in dark theme, light grey in light
+     theme. Width: the screen minus 24dp each side, at most 440dp on
+     tablets.
 4. **Applying:** running apps keep their old fonts until they restart, so
-   Apply restarts the launcher, Settings and SystemUI. Other open apps
-   switch the next time they start.
+   Apply restarts the launcher, Settings and SystemUI, and reopens *Font and
+   display size* so the user lands where they were. Other open apps switch
+   the next time they start.
 
 **NType (serif): Old Standard TT, `somethingos-serif`.** NType is Nothing's
 own serif, used for titles such as the Glyph app's, "App drawer & Search"

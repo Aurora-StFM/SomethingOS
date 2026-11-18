@@ -4,15 +4,11 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
-    <string name="app_name">System font</string>
-    <string name="title">System font</string>
-    <string name="summary">Choose the font used across the system</string>
+    <string name="app_name">Default font</string>
     <string name="preview" translatable="false">Aa 123</string>
     <string name="font_roboto" translatable="false">Roboto</string>
     <string name="font_geist" translatable="false">Geist</string>
     <string name="cancel">Cancel</string>
     <string name="apply">Apply</string>
-    <string name="applying">Applying…</string>
-    <string name="restart_note">Open apps switch to the new font when they next restart.</string>
     <string name="error">Couldn\'t change the font (error %1$d).</string>
 </resources>

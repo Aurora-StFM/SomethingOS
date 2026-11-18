@@ -18,8 +18,9 @@
 
     <!-- LineageOS repos replaced by SomethingOS forks -->
 
-    <!-- Overlays: adds the somethingos-dot font family to
-         fonts_customization.xml (Android reads only one such file). -->
+    <!-- Overlays: registers the SomethingOS font families in
+         fonts_customization.xml (Android reads only one such file) and
+         points LineageOS's Google Sans families at Geist. -->
     <remove-project name="LineageOS/android_packages_overlays_Lineage" />
     <project name="android_packages_overlays_Lineage"
              path="packages/overlays/Lineage"

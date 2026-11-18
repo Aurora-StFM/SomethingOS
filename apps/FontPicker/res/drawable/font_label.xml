@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The SomethingOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- Font name under a card: a filled pill when its option is selected. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="100dp" />
+            <solid android:color="@color/label_selected_background" />
+        </shape>
+    </item>
+    <item android:drawable="@android:color/transparent" />
+</selector>

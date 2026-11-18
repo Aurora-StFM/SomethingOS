@@ -3,19 +3,19 @@
      SPDX-FileCopyrightText: 2026 The SomethingOS Project
      SPDX-License-Identifier: Apache-2.0
 -->
-<!-- Preview card: outlined in the accent colour when selected. -->
+<!-- Preview card: outlined when its option is selected. -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_selected="true">
         <shape android:shape="rectangle">
-            <corners android:radius="24dp" />
-            <solid android:color="?android:attr/colorBackgroundFloating" />
-            <stroke android:width="2dp" android:color="?android:attr/colorAccent" />
+            <corners android:radius="20dp" />
+            <solid android:color="@color/card_background" />
+            <stroke android:width="2dp" android:color="@color/card_selected_outline" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
-            <corners android:radius="24dp" />
-            <solid android:color="?android:attr/colorBackgroundFloating" />
+            <corners android:radius="20dp" />
+            <solid android:color="@color/card_background" />
         </shape>
     </item>
 </selector>
