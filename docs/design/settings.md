@@ -170,8 +170,8 @@ Plan:
    `UPDATE_FONTS`. On **Apply** it installs the chosen font with its
    signature, redefines every `google-sans…`/`variable-…` family to it
    (keeping each family's weights), and switches `FontRobotoOverlay`
-   through SystemUI's theme setting. Runtime switching is proven on the Phone (1);
-   the layout below is to be checked on a device.
+   through SystemUI's theme setting. Runtime switching is proven on the Phone (1),
+   and the dialog's look was confirmed there on 2026-11-18.
    - **Where it appears:** a **Default font** row, with the current font as
      its summary, at the top of *Size options* in Settings > Display > *Font
      and display size*, as in NothingOS. That page is built in code

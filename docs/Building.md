@@ -165,6 +165,16 @@ normal sync refuses ("cannot overwrite a local work tree"); `--force-sync`
 replaces it. Only use it on folders where you haven't made your own changes.
 Check the result with `git -C <path> log -1 --oneline`.
 
+If the sync prints `error: hooks is different in .repo/projects/<path>.git`,
+the folder still has the old repository: its record in `.repo/projects/`
+points at the old repo's data. Delete the record and the checkout, then
+sync again (the new repo's data was already downloaded, so it's quick):
+
+```bash
+rm -rf .repo/projects/<path>.git <path>
+repo sync -c <path>
+```
+
 ## If the build is killed
 
 If the build stops with `Killed` and `exit=137 # signal:killed`, the system

@@ -177,7 +177,12 @@ So:
   commands for target". Fork the owning repo instead.
 - **Switching a synced folder to a fork** needs
   `repo sync -c --force-sync <path>` after updating
-  `.repo/local_manifests/`; a plain sync silently keeps the old repo.
+  `.repo/local_manifests/`; a plain sync silently keeps the old repo. If it
+  then prints "hooks is different", delete `.repo/projects/<path>.git` and
+  `<path>` and sync again.
+- **`vendor/lineage/vars/aosp_target_release` is a shell script**
+  (`aosp_target_release=cp2a`), not a bare value: `source` it and use
+  `$aosp_target_release`; `$(cat …)` breaks `lunch`.
 - **`soong_build` needs a lot of memory** (60–70 GB peak). Builds get killed
   (exit 137) without a large swapfile.
 - **ccache needs `CCACHE_DIR`.** Compile steps run sandboxed as `nobody`;
