@@ -26,7 +26,14 @@ layout itself is restyling.
 A **Special features** entry in the main Settings list, in the last group
 between *System* and *About*, as in NothingOS. Built in our Settings fork
 (`com.android.settings.somethingos`), so its pages are ordinary Settings
-pages and look like the rest. Status: written 2026-11-18, to be tested.
+pages and look like the rest. Status: works on the Phone (1) (2026-11-18);
+the title fonts switch as intended.
+
+Title layout still differs from NothingOS (to do with the Settings
+restyle): NothingOS puts the back arrow on its own row with a large title
+under it, wrapping onto two lines, while LineageOS's title sits beside a
+round back button. The dot-matrix title is also more widely spaced than
+NothingOS's.
 
 Contents, in NothingOS's order, added as each is built rather than shown
 empty:
