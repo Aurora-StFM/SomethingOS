@@ -26,4 +26,12 @@
              path="packages/overlays/Lineage"
              remote="somethingos"
              revision="somethingos-24.0" />
+
+    <!-- Settings: adds the Default font row to Font and display size,
+         which opens the SomethingOS font picker (apps/FontPicker). -->
+    <remove-project name="LineageOS/android_packages_apps_Settings" />
+    <project name="android_packages_apps_Settings"
+             path="packages/apps/Settings"
+             remote="somethingos"
+             revision="somethingos-24.0" />
 </manifest>
