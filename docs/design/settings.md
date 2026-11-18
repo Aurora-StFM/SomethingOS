@@ -8,10 +8,12 @@ Two panes on tablets: settings list on the left, the selected page on the
 right. Android's Settings already does this on large screens, so the
 layout itself is restyling.
 
-- **Titles:** large page titles ("Settings", "About device"). Rendered in a
-  dot-matrix font when the experimental **Dot font** toggle is on (see
-  below). Needs a small Settings patch, since a static overlay can't switch
-  fonts based on a setting.
+- **Titles:** large page titles ("Settings", "About device"), as in
+  NothingOS: in the serif (`somethingos-serif`, Old Standard TT, standing in
+  for NType) by default, or in capitals in the dot-matrix font
+  (`somethingos-dot`) when **Dot matrix title** is on (see Special features).
+  Done in our Settings fork (`SomethingTitles`, applied in
+  `SettingsBaseActivity`, which every Settings page uses).
 - **Search:** pill-shaped search bar at the top of the list. Restyle of the
   existing one.
 - **List:** entries grouped into rounded cards with dividers between rows.
@@ -21,22 +23,29 @@ layout itself is restyling.
 
 ## Special features
 
-A SomethingOS section in the main Settings list, provided by a small
-SomethingOS settings app. Android lets other apps inject entries into
-Settings (this is how Lineage adds its own), so no Settings fork is needed
-for it. First contents:
+A **Special features** entry in the main Settings list, in the last group
+between *System* and *About*, as in NothingOS. Built in our Settings fork
+(`com.android.settings.somethingos`), so its pages are ordinary Settings
+pages and look like the rest. Status: written 2026-11-18, to be tested.
 
-- **Experimental → Dot font:** use the dot-matrix font for **Settings page
-  titles**. That's all it changes.
+Contents, in NothingOS's order, added as each is built rather than shown
+empty:
 
-The goal is to add most, if not all, of NothingOS's special features over
-time, built up as the ROM matures rather than all at once:
-
-- Experimental features (starting with Dot font)
+- **Experimental features** ("Try upcoming features early"): features still
+  being tested. A footer with an info icon explains that they may change.
+  - **Dot matrix title**: Settings page titles in capitals in the
+    dot-matrix font instead of the serif. That's all it changes. Stored in
+    `Settings.Secure` `somethingos_dot_titles`; the current page's title
+    changes as soon as it's switched.
+  - NothingOS also lists AirPods support and Glyph Progress here; not
+    planned yet.
 - Gestures
 - RAM Booster
 - Pop-up view (see [recents.md](recents.md))
 - Game Mode
+
+NothingOS ends the page with a "Looking for other settings?" card linking
+to its other apps; we'll add one if SomethingOS gets related apps.
 
 ## About device
 
@@ -88,7 +97,7 @@ maximum). At those settings it is nearly identical to NDot.
   [Aurora-StFM/android_packages_overlays_Lineage](https://github.com/Aurora-StFM/android_packages_overlays_Lineage)
   (branch `somethingos-24.0`).
 - Ship the OFL licence text alongside the font file.
-- Used for: large Settings page titles (only when the Dot font option is
+- Used for: large Settings page titles (only when Dot matrix title is
   on). Also available to dot-matrix widgets and the community widget kit.
   Not the lock screen's Dot matrix clock face, which uses a different dot
   style (see [lockscreen.md](lockscreen.md#clock-faces)).
