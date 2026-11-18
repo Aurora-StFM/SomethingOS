@@ -87,7 +87,11 @@ So:
     - **Special features** (`src/com/android/settings/somethingos/`,
       `res/xml/somethingos_*.xml`, an entry in each `top_level_settings*.xml`);
     - serif / dot-matrix page titles (`somethingos/SomethingTitles.java`,
-      hooked into `core/SettingsBaseActivity.java`).
+      hooked into `core/SettingsBaseActivity.java`);
+    - the NothingOS-style restyle: overrides of SettingsLib resources in
+      `res-somethingos/` (added to `resource_dirs` in `Android.bp`). Same name
+      and qualifier as the SettingsLib resource replaces it, so SettingsLib's
+      look can change without forking `frameworks/base`.
 
     New code goes in the `somethingos` package, new resources are named
     `somethingos_*`, new strings go in `res/values/somethingos_strings.xml`
