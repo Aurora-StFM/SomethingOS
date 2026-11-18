@@ -17,11 +17,14 @@
         android:supportsRtl="true">
 
         <!-- A dialog opened from Settings > Display > Font and display size >
-             Default font (our packages_apps_Settings fork). -->
+             Default font (our packages_apps_Settings fork).
+             assetsPaths: applying Roboto enables a font overlay, which would
+             otherwise rebuild this dialog and lose the restart question. -->
         <activity
             android:name=".FontPickerActivity"
             android:exported="true"
             android:excludeFromRecents="true"
+            android:configChanges="assetsPaths"
             android:theme="@style/Theme.FontPicker">
             <intent-filter>
                 <action android:name="org.somethingos.fontpicker.action.PICK_FONT" />

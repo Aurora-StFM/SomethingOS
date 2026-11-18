@@ -56,6 +56,11 @@ public class FontPickerActivity extends Activity {
 
     /** True once the font is applied and the dialog is asking whether to restart. */
     private boolean mAskingToRestart;
+    /** True while the font is being applied. */
+    private boolean mApplying;
+
+    /** Saved across a rebuild of this activity. */
+    private static final String STATE_ASK_TO_RESTART = "ask_to_restart";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +93,14 @@ public class FontPickerActivity extends Activity {
             }
         });
 
+        // Rebuilt after Apply (the Roboto overlay changes resources): keep asking. A rebuild
+        // while applying also means it worked, as the overlay is switched last.
+        if (savedInstanceState != null
+                && savedInstanceState.getBoolean(STATE_ASK_TO_RESTART, false)) {
+            askToRestart();
+            return;
+        }
+
         // Show the font in use; asking the font service is quick but not instant.
         setControlsEnabled(false);
         mExecutor.execute(() -> {
@@ -98,6 +111,12 @@ public class FontPickerActivity extends Activity {
                 select(current);
             });
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(STATE_ASK_TO_RESTART, mAskingToRestart || mApplying);
     }
 
     @Override
@@ -127,6 +146,7 @@ public class FontPickerActivity extends Activity {
 
     private void apply() {
         SystemFont font = mSelected;
+        mApplying = true;
         setControlsEnabled(false);
         mExecutor.execute(() -> {
             int result;
@@ -137,10 +157,14 @@ public class FontPickerActivity extends Activity {
                 result = FontManager.RESULT_ERROR_FAILED_UPDATE_CONFIG;
             }
             if (result == FontManager.RESULT_SUCCESS) {
-                mMainHandler.post(this::askToRestart);
+                mMainHandler.post(() -> {
+                    mApplying = false;
+                    askToRestart();
+                });
             } else {
                 final int error = result;
                 mMainHandler.post(() -> {
+                    mApplying = false;
                     Toast.makeText(this, getString(R.string.error, error), Toast.LENGTH_LONG)
                             .show();
                     setControlsEnabled(true);
