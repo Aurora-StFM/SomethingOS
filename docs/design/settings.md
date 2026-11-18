@@ -30,9 +30,13 @@ SettingsLib's), so `frameworks/base` isn't forked for it. Steps:
 1. **Title area** (done, confirmed on the Phone (1)): expanded by default,
    plain back arrow, 34dp title 20dp from the edges.
 2. **Colours:** NothingOS's monochrome palette instead of Material You.
-   Dark (written, to be tested): black page, `#191919` cards, `#FBFBFB`
-   titles, `#999999` summaries and section headers, switches with a
-   `#E0E0E0` track and dark thumb when on. Light: needs references.
+   Written, to be tested.
+   - Dark: black page, `#191919` cards, `#FBFBFB` titles, `#999999`
+     summaries and section headers; switches with a `#E0E0E0` track and
+     dark thumb when on.
+   - Light: `#F1F1F1` page, `#FBFBFB` cards, `#0E0E0E` titles, `#6F6F6F`
+     summaries and section headers; white switch thumbs on a `#5E5E5E`
+     (on) or `#C6C6C6` (off) track.
 3. **Lists:** card corners and spacing; plain monochrome icons instead of
    coloured circles on the main page.
 4. **Main page:** "SETTINGS" title, profile picture, search bar.
