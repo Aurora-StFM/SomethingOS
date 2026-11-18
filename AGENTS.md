@@ -211,6 +211,9 @@ So:
   `com.android.systemui` silently does nothing. Changes SystemUI only loads at
   start-up (like fonts) need a reboot, or a SystemUI change that restarts
   itself.
+- **Only resource files in resource folders.** `aapt2` treats every file in a
+  `res*/` directory as a resource; a `README.md` there fails the build with
+  "invalid configuration". Put notes in `Android.bp` comments instead.
 - **`repo sync` from android.googlesource.com is rate-limited** for anonymous
   users (HTTP 429). Use `-j4` and retry later, or authenticate with
   `.gitcookies`.
