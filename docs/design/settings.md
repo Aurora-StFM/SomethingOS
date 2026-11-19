@@ -30,15 +30,19 @@ SettingsLib's), so `frameworks/base` isn't forked for it. Steps:
 1. **Title area** (done, confirmed on the Phone (1)): expanded by default,
    plain back arrow, 34dp title 20dp from the edges.
 2. **Colours:** NothingOS's monochrome palette instead of Material You.
-   Written, to be tested.
+   Done, confirmed on the Phone (1) (2026-11-19).
    - Dark: black page, `#191919` cards, `#FBFBFB` titles, `#999999`
      summaries and section headers; switches with a `#E0E0E0` track and
      dark thumb when on.
    - Light: `#F1F1F1` page, `#FBFBFB` cards, `#0E0E0E` titles, `#6F6F6F`
      summaries and section headers; white switch thumbs on a `#5E5E5E`
      (on) or `#C6C6C6` (off) track.
-3. **Lists:** card corners and spacing; plain monochrome icons instead of
-   coloured circles on the main page.
+3. **Lists** (written, to be tested): cards 14dp from the screen edge
+   (NothingOS 12dp) with 16dp corners, text 28dp in, row titles 17sp
+   regular weight; plain monochrome icons instead of coloured circles on
+   the main page. `res-somethingos` is the last resource overlay, so it
+   can override Settings' own resources (the `homepage_*` icon colours)
+   as well as SettingsLib's.
 4. **Main page:** "SETTINGS" title, profile picture, search bar.
 5. **Controls:** switches without the tick/cross icons, sliders.
 
